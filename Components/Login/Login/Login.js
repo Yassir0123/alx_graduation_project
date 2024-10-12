@@ -3,7 +3,7 @@ import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'reac
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-//import {URL} from '@env'
+//import {URL} from '@env';
 const Login = () => {
   
   const navigation = useNavigation();
@@ -38,8 +38,8 @@ const saveUserData = async (id, email,nom,prenom) => {
           setErrorMessage('Invalid email domain.');
           return;
       }
-       // console.log('lol',URL);
-      const response = await axios.post('http://10.20.69.188/logo/Components/Login/phpfolder/login.php',  {
+       console.log('lol',URL);
+      const response = await axios.post('http://192.168.11.106/alx/Components/Login/phpfolder/login.php',  {
           email: email,
           password: password,
       });
@@ -89,10 +89,10 @@ const saveUserData = async (id, email,nom,prenom) => {
             secureTextEntry={true}
             value={password}
           />
-          <Text style={styles.forgotPassword} onPress={() => handleForgotPassword()}>
+          {/*<Text style={styles.forgotPassword} onPress={() => handleForgotPassword()}>
              Mot de passe oublié?
             </Text>
- 
+ */}
             {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
 
            <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
