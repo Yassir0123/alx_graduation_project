@@ -39,7 +39,7 @@ const saveUserData = async (id, email,nom,prenom) => {
           return;
       }
        console.log('lol',URL);
-      const response = await axios.post('http://192.168.11.106/alx/Components/Login/phpfolder/login.php',  {
+      const response = await axios.post('http://192.168.11.106/alx/alx/Components/Login/phpfolder/login.php',  {
           email: email,
           password: password,
       });
