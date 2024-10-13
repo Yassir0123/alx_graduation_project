@@ -39,13 +39,13 @@ const saveUserData = async (id, email,nom,prenom) => {
           return;
       }
        console.log('lol',URL);
-      const response = await axios.post('http://192.168.11.106/alx/alx/Components/Login/phpfolder/login.php',  {
+      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Login/phpfolder/login.php',  {
           email: email,
           password: password,
       });
       if (response.data.message === 'Login successful') {
           setErrorMessage('');
-
+      console.log(response.data)
           saveUserData(response.data.id,email,response.data.nom,response.data.prenom);
           navigation.navigate('RoleNavigation', { userRole: domain});      
       

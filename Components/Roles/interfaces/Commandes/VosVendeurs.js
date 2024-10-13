@@ -26,7 +26,7 @@ const VosVendeurs = () => {
           console.log('Email:', email);
 
           const response = await axios.post(
-            'http://192.168.11.106/logo/Components/Roles/interfaces/phpfolderv2/getvendeur.php',
+            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getvendeur.php',
             {
               userId: userId,
             },

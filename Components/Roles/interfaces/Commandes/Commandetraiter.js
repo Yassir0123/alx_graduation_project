@@ -18,7 +18,7 @@ const Atraiter = () => {
         setFullName(storedFullName);
 
         const response = await axios.get(
-          'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getnewcmds.php',
+          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getnewcmds.php',
         );
         setData(response.data.userData);
       } catch (error) {
@@ -35,7 +35,7 @@ const Atraiter = () => {
 
     try {
       responses = await axios.post(
-        'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
         {
           idcmdcount: user.id_commande, // Use id_commandeachat for the selected card
         },

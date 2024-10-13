@@ -34,7 +34,7 @@ const VosCommandes = () => {
 
         try {
           const response = await axios.post(
-    'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommands.php',
+    'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommands.php',
             {
               userid: userId,
               email: email,
@@ -45,7 +45,7 @@ const VosCommandes = () => {
           );
           try {
             const responser = await axios.post(
-              'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getstatistics.php',
+              'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getstatistics.php',
               {
                 userid: userId,
                 email: email,
@@ -106,7 +106,7 @@ const VosCommandes = () => {
       const email = await AsyncStorage.getItem('email');
    
       const response = await axios.post(
-'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/addcommande.php',
+'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addcommande.php',
         JSON.stringify(clientData),
         {
           headers: {
@@ -120,7 +120,7 @@ const VosCommandes = () => {
   
       try {
         responses = await axios.post(
-  'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+  'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
           {
             idcmdcount: user.id_commande,
           },

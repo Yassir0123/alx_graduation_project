@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$target_path = "C:/xampp/htdocs/logo/Components/Roles/interfaces/Products/img/";
+$target_path = "C:/xampp/htdocs/alx/alx/Components/Roles/interfaces/Products/img/";
 
 $target_file = $target_path . basename($_FILES['file']['name']);
 

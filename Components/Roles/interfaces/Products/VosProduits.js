@@ -20,8 +20,8 @@ const AddProducts = ({ route }) => {
 
   const fetchData = () => {
     const endpoint = actions === 0 
-      ? 'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getproducts.php'
-      : 'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php';
+      ? 'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproducts.php'
+      : 'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php';
 
     axios
       .post(endpoint, {
@@ -57,7 +57,7 @@ const AddProducts = ({ route }) => {
 
   const renderItem = ({ item, index }) => (
     <TouchableOpacity key={index} style={styles.itemCard} onPress={() => handleCardPress(item)}>
-      <Image source={{ uri: `http://192.168.11.106/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.itemImage} />
+      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.itemImage} />
       <View style={styles.grid}>
         <Text style={styles.itemName}>{item.libeller}</Text>
         <Text style={styles.itemValue}><Text style={styles.itemLabel}>Category: </Text>{item.nom_categorie}</Text>

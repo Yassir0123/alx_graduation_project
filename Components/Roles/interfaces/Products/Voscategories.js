@@ -25,10 +25,10 @@ const AddCategory = ({ route }) => {
   const fetchData = async () => {
     try {
       if (actions === 1) {
-        const response = await axios.get('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php');
+        const response = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php');
         setData(response.data);
       } else {
-        const response = await axios.post('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesid.php', {
+        const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesid.php', {
           id_categorie: categoryId,
         });
         setData(response.data);
@@ -45,7 +45,7 @@ const AddCategory = ({ route }) => {
   const renderCategoryCard = ({ item }) => (
     <TouchableOpacity onPress={() => handleCardPress(item)} style={styles.categoryCard}>
       <View>
-        <Image source={{ uri: `http://192.168.11.106/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
+        <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
         <Text style={styles.categoryName}>{item.nom_categorie}</Text>
       </View>
     </TouchableOpacity>

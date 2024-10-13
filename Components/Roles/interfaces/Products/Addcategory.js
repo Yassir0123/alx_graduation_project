@@ -23,7 +23,7 @@ const AddCategory = ({ route }) => {
   const fetchData = async () => {
     try {
       console.log(getdata);
-      const response = await axios.post('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesid.php', {
+      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesid.php', {
         id_categorie: getdata.id_grandcategorie,
       });
       setData(response.data);
@@ -63,7 +63,7 @@ const AddCategory = ({ route }) => {
     });
 
     try {
-      const responseImage = await fetch('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
+      const responseImage = await fetch('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
         method: 'POST',
         body: formData,
         headers: {
@@ -93,7 +93,7 @@ const AddCategory = ({ route }) => {
     if (addData && selectedImage) {
       try {
         const imageUrl = await uploadImage(selectedImage);
-        const response = await axios.post('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/addcategorie.php', {
+        const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addcategorie.php', {
           nomcat: addData,
           image: imageUrl,
           id_grandcategorie: getdata.id_grandcategorie,
@@ -129,7 +129,7 @@ const AddCategory = ({ route }) => {
         if (selectedImage) {
           imageUrl = await uploadImage(selectedImage);
         }
-        const response = await axios.post('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/updatecategorie.php', {
+        const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updatecategorie.php', {
           id: selectedItem,
           nomcat: editData,
           image: imageUrl,
@@ -153,7 +153,7 @@ const AddCategory = ({ route }) => {
 
   const handleDeleteCategory = async (category) => {
     try {
-      const response = await axios.post('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecategorie.php', {
+      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecategorie.php', {
         id: category.id_categorie,
       });
       fetchData();
@@ -165,7 +165,7 @@ const AddCategory = ({ route }) => {
 
   const renderCategoryCard = ({ item }) => (
     <View style={styles.categoryCard}>
-      <Image source={{ uri: `http://192.168.11.106/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
+      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
       <Text style={styles.categoryName}>{item.nom_categorie}</Text>
       <TouchableOpacity style={styles.editButton} onPress={() => handleEditCategory(item)}>
         <Text style={styles.buttonText}>Edit</Text>

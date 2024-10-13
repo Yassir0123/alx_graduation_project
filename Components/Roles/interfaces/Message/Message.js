@@ -13,7 +13,7 @@ const App = () => {
       const fetchClientData = async () => {
         try {
           const response = await axios.post(
-          'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
+          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
             {
               responseType: 'json',
             }

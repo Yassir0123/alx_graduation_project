@@ -11,7 +11,7 @@ try {
     $idv=reset($ids);
     $sqll = $pdo->prepare('SELECT * from lignecommande where id_commande=?');
     $sqll->execute([$idv]);
-    $responses = $sql->fetchAll(PDO::FETCH_ASSOC);
+    $responses = $sqll->fetchAll(PDO::FETCH_ASSOC);
     if (count($responses) > 0) {
       
         echo json_encode(array('message' => 'got data','userData'=>$responses));
@@ -25,6 +25,8 @@ try {
 } catch (PDOException $e) {
     echo json_encode(array('error' => 'Database error: ' . $e->getMessage()));
 }
+
+
 
 
 

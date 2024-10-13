@@ -72,7 +72,7 @@ const Commercial_Vendeur = () => {
         };
 
         const response = await axios.post(
-          'http://192.168.11.106/logo/Components/Roles/interfaces/phpfolderv2/addvendeur.php',
+          'http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/addvendeur.php',
           JSON.stringify(requestData),
           {
             headers: {
