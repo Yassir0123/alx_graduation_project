@@ -1,10 +1,12 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Commercial from './Commercial/AppNavigation'; 
+import Operateur from './operateur/AppNavigation'; 
 const Stack = createStackNavigator();
 
 const componentMapping = {
-    'commerciale.com': Commercial
+    'commerciale.com': Commercial,
+    'operateur.com':Operateur
 };
 
 const RoleNavigation = ({route}) => { 
