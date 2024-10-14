@@ -24,10 +24,6 @@ const PlaceCommand = ({ route }) => {
   }, [FournisseurData, product]);
 
   const addItemToCart = () => {
-    if (quantity > product.quantity) {
-      setError('La quantité choisie dépasse celle du stock');
-      return;
-    }
 
     const addedProduct = {
       idProduct: product.id,
@@ -73,7 +69,7 @@ const PlaceCommand = ({ route }) => {
         </View>
         <View style={styles.preferenceContainer}>
           <Text style={styles.preferenceTitle}>Details</Text>
-          <Text style={styles.preferenceText}>Choisissez votre quantiter souhaité</Text>
+          <Text style={styles.preferenceText}>Choose your quantity</Text>
         </View>
         <View style={styles.quantityContainer}>
           <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>

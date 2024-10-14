@@ -13,7 +13,7 @@ const BDLVALIDER = () => {
 
       try {
         const response = await axios.get(
-          'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonvalider.php'
+          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonvalider.php'
         );
         if (response.data.message === 'got data') {
           setData(response.data.userData);
@@ -41,19 +41,19 @@ const BDLVALIDER = () => {
   const renderUserItem = ({ item }) => (
     <TouchableOpacity style={styles.userItem} onPress={() => handleUserPress(item)}>
       <Text style={styles.label}>
-        Bon #{item.id_bonvalider}         Commande #{item.id_commande}
+        Bon #{item.id_bonvalider}         Order #{item.id_commande}
       </Text>
       <Text style={styles.cardText}>
-        Operateur #{item.id_operateur}  Livreur #{item.id_livreur}
+        Operateur #{item.id_operateur}  Delivery #{item.id_livreur}
       </Text>
       <Text style={styles.cardText}>
         Vendeur #{item.id_vendeur}     Commerciale #{item.id_commerciale}
       </Text>
       <Text style={styles.label}>
-        Client #{item.id_client}        Nom: {item.nom_client} {item.prenom_client}
+        Client #{item.id_client}        First Name: {item.nom_client} {item.prenom_client}
       </Text>
       <Text style={styles.cardText}>
-        Telephone: {item.telephone_client}    Adresse: {item.localisation}  MT: ${item.montant_totale}
+        Telephone: {item.telephone_client}    Adress:  {item.localisation}  MT: ${item.montant_totale}
       </Text>
       <Text style={styles.cardText}>
         Date: {item.date_livraison}
@@ -69,10 +69,10 @@ const BDLVALIDER = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.heading}>Bons valider</Text>
+        <Text style={styles.heading}>Validated Notes</Text>
         <TextInput
           style={styles.searchInput}
-          placeholder="Search by ID Bonlivraison"
+          placeholder="Search by ID Note"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
         />

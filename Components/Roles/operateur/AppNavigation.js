@@ -20,9 +20,9 @@ const AppNavigator = () => {
             iconName = focused ? 'home' : 'home-outline';
           } else if (route.name === 'Stock') {
             iconName = focused ? 'cube' : 'cube-outline';
-          } else if (route.name === 'Alerte') {
+          } else if (route.name === 'Alert') {
             iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
-          } else if (route.name === 'Bon De Livraison') {
+          } else if (route.name === 'Delivery Slip') {
             iconName = focused ? 'document' : 'document-outline';
           }
 
@@ -36,8 +36,8 @@ const AppNavigator = () => {
     >
       <Tab.Screen name="Home" component={Atraiter} />
       <Tab.Screen name="Stock" component={Productsroutes} />
-      <Tab.Screen name="Alerte" component={Message} />
-      <Tab.Screen name="Bon De Livraison" component={BDLRouter} />
+      <Tab.Screen name="Alert" component={Message} />
+      <Tab.Screen name="Delivery Slip" component={BDLRouter} />
     </Tab.Navigator>
   );
 };

@@ -71,10 +71,10 @@ const VosClients = () => {
       </View>
       <View style={styles.details}>
         <Text style={styles.detailText}>ID: {item.id_client}</Text>
-        <Text style={styles.detailText}>Adresse: {item.addresse}</Text>
-        <Text style={styles.detailText}>Localisation: {item.localisation}</Text>
-       <Text style={styles.detailText}>Date_naissance: {item.date_naissance}</Text>
-       <Text style={styles.detailText}>Téléphone: {item.telephone_client}</Text>
+        <Text style={styles.detailText}>Adress: {item.addresse}</Text>
+        <Text style={styles.detailText}>Localization: {item.localisation}</Text>
+       <Text style={styles.detailText}>Entry_Date: {item.date_naissance}</Text>
+       <Text style={styles.detailText}>Phone Number: {item.telephone_client}</Text>
       </View>
     </View>
   );

@@ -25,13 +25,13 @@ const PlaceCommand = ({ route }) => {
 
   const addItemToCart = () => {
     if (quantity > product.quantity) {
-      setError('La quantité choisie dépasse celle du stock');
+      setError('The quantity you specified has surpassed the stock quantity');
       return;
     }
 
     if (['fruit', 'legume', 'poissonerie', 'charcuterie', 'Laitiers', 'epice'].includes(selectedMainCategory)) {
       if (quantity < 1 || quantity > 20000) {
-        setError('Veuillez entrer une quantité entre 1 et 20000');
+        setError('Please enter a quantity between 1 and 20000');
         return;
       }
     }
@@ -79,7 +79,7 @@ const PlaceCommand = ({ route }) => {
         </View>
         <View style={styles.preferenceContainer}>
           <Text style={styles.preferenceTitle}>Details</Text>
-          <Text style={styles.preferenceText}>Choisissez votre quantiter souhaité</Text>
+          <Text style={styles.preferenceText}>Choose your quantity</Text>
         </View>
         {['fruit', 'legume', 'poissonerie', 'charcuterie', 'Laitiers', 'epice'].includes(selectedMainCategory) ? (
           <View style={styles.inputContainer}>

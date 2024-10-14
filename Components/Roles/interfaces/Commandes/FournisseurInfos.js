@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, cloneElement } from 'react';
 import { View, Animated, StyleSheet, ScrollView, Image, TouchableOpacity, ActivityIndicator,Linking } from 'react-native';
 import { 
   Provider as PaperProvider, 
@@ -199,7 +199,6 @@ const CommandScreen = ({ route }) => {
   const theme = useTheme();
   const slideAnim = useSlideInAnimation();
   const { FournisseurData } = route.params;
-
   const generateRandomDescription = () => {
     const descriptions = [
       "High-quality product with excellent features.",
@@ -214,6 +213,7 @@ const CommandScreen = ({ route }) => {
   useFocusEffect(
     React.useCallback(() => {
       const fetchClientData = async () => {
+        console.log('info:', FournisseurData.action)
         if(FournisseurData.action===0){
           try {
             //no need for response bc you're directly acting not expecting a response
@@ -242,7 +242,7 @@ const CommandScreen = ({ route }) => {
             }
           );
 
-          console.log(response.data.userData);
+          console.log('lol',response.data.userData);
           
           const productsWithDescriptions = response.data.userData.map(product => ({
             ...product,
@@ -295,6 +295,8 @@ const CommandScreen = ({ route }) => {
   
   const handlepress = async () => {
 const userId = await AsyncStorage.getItem('userId');
+console.log('i am here')
+console.log('lo', FournisseurData)
     const email = await AsyncStorage.getItem('email');
     const formattedDate = formatDateForSQL(commandDate);
     setEmail(email);
@@ -307,6 +309,9 @@ const userId = await AsyncStorage.getItem('userId');
     console.log(totalAmount);
     console.log(userId);
     console.log(formattedDate);
+   
+    if(FournisseurData.modify===0){
+      console.log('firstcheck')
     const response = await axios.post(
       'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmdachat.php',
       {
@@ -341,6 +346,36 @@ const userId = await AsyncStorage.getItem('userId');
     } else {
       console.log(response.data);
     }
+    }else{
+      const response = await axios.post(
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updatevalidateachat.php',
+        {
+          idcmd:FournisseurData.idcmdcount,
+          mt:totalAmount,
+          date:formattedDate
+        },
+        {
+          responseType: 'json',
+        }
+      );
+       if(response.data.message==='Data inserted successfully'){
+        const messageContent = products.map((item) => `${item.libeller}: ${item.quantiter}`);
+        const subject = encodeURIComponent('Demande de ravitallement');
+        const body = encodeURIComponent(messageContent);
+        const recipient = encodeURIComponent(FournisseurData.email_contact);
+        const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        Linking.openURL(mailtoUrl)
+        .then(() => {
+          console.log('Email client opened successfully');
+        })
+        .catch((error) => {
+          console.error('Error opening email client:', error);
+        });
+        navigation.navigate('Commandes');
+      } else {
+        console.log(response.data);
+      }
+    }
   };
 
   const addProduct = () => {
@@ -356,7 +391,7 @@ const userId = await AsyncStorage.getItem('userId');
     const updatedProducts = products.map(p => p.id_lignecommandeachat === editedProduct.id_lignecommandeachat ? editedProduct : p);
     setProducts(updatedProducts);
     calculateTotalAmount(updatedProducts);
-    console.log('hi: ', editedProduct);
+    console.log('hi pop: ', editedProduct);
     const editedProd = [
       id = editedProduct.id_lignecommandeachat,
       quantiter = editedProduct.quantiter,
@@ -389,10 +424,10 @@ const userId = await AsyncStorage.getItem('userId');
         <Animated.View style={[styles.content, { transform: [{ translateY: slideAnim }] }]}>
           <Card style={styles.card}>
             <Card.Content>
-              <Title style={styles.cardTitle}>Command Information</Title>
+              <Title style={styles.cardTitle}>Order Information</Title>
               <Divider style={styles.divider} />
               <View style={styles.commandInfo}>
-                <Paragraph style={styles.commandInfoLabel}>Command ID:</Paragraph>
+                <Paragraph style={styles.commandInfoLabel}>Order ID:</Paragraph>
                 <Paragraph style={styles.commandInfoValue}>CMD{FournisseurData.idcmdcount}</Paragraph>
               </View>
               <View style={styles.commandInfo}>

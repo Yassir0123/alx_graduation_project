@@ -15,10 +15,10 @@ const NewFournisseur = () => {
     <View style={styles.container}>
       <View>
         <TouchableOpacity style={styles.button} onPress={NavigateNouveau}>
-          <Text style={styles.buttonText}>Nouveau-Fournisseur</Text>
+          <Text style={styles.buttonText}>New Supplier</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={Navigate}>
-          <Text style={styles.buttonText}>Fournisseur-Existant</Text>
+          <Text style={styles.buttonText}>Existing Supplier</Text>
         </TouchableOpacity>
       </View>
     </View>

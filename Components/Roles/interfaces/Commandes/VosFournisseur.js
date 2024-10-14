@@ -74,7 +74,8 @@ const VosCommandes = () => {
       telephone_contact: user.telephone,
       montanttotale: user.montant_totale,
       email_contact: user.email,
-      action: 1,
+      action: 2,
+      modify: 1,
     };
 
     navigation.navigate('Commande_Fournisseur', { FournisseurData: FournisseurData });
@@ -110,34 +111,34 @@ const VosCommandes = () => {
             </style>
           </head>
           <body>
-            <h1>Commande Details</h1>
+            <h1>Order Details</h1>
             <table>
               <tr>
                 <td><strong>ID Achat:</strong> ${user.id_achat}</td>
-                <td><strong>ID Commande:</strong> ${user.id_commandeachat}</td>
+                <td><strong>ID Order:</strong> ${user.id_commandeachat}</td>
               </tr>
               <tr>
-                <td><strong>ID Fournisseur:</strong> ${user.id_fournisseur}</td>
-                <td><strong>Nom Entreprise:</strong> ${user.nom_entreprise}</td>
+                <td><strong>ID Supplier:</strong> ${user.id_fournisseur}</td>
+                <td><strong>Company name:</strong> ${user.nom_entreprise}</td>
               </tr>
               <tr>
                 <td><strong>Email:</strong> ${user.email}</td>
-                <td><strong>Téléphone:</strong> ${user.telephone}</td>
+                <td><strong>Phone number:</strong> ${user.telephone}</td>
               </tr>
               <tr>
-                <td><strong>Montant Total:</strong> ${user.montant_totale}</td>
-                <td><strong>Date Livraison:</strong> ${user.date_livraison}</td>
+                <td><strong>Total Amount:</strong> ${user.montant_totale}</td>
+                <td><strong>Delivery Date:</strong> ${user.date_livraison}</td>
               </tr>
             </table>
-            <h2>Produits</h2>
+            <h2>Products</h2>
             <table>
               <thead>
                 <tr>
-                  <th>ID Produit</th>
-                  <th>Libellé</th>
-                  <th>Catégorie</th>
-                  <th>Quantité</th>
-                  <th>Prix</th> 
+                  <th>ID Product</th>
+                  <th>Label</th>
+                  <th>Cateogry</th>
+                  <th>Quantity</th>
+                  <th>Price</th> 
                   <th>TVA</th>
                 </tr>
               </thead>
@@ -171,7 +172,7 @@ const VosCommandes = () => {
 
   const stats = [
     { title: "Total Cmds", value: data.length.toString(), icon: "cart-outline", colors: ["#FF9FF3", "#FF6B6B"] },
-    { title: "Montant Total", value: data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2), icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
+    { title: "Total Amount", value: data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2), icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
   ];
 
   const renderStatItem = ({ item }) => (
@@ -189,11 +190,11 @@ const VosCommandes = () => {
       </View>
       <Text style={styles.commandeDate}>{item.date_livraison}</Text>
       <View style={styles.commandeDetails}>
-        <Text style={styles.detailText}>ID: {item.id_commandeachat} • Fournisseur: {item.id_fournisseur}</Text>
+        <Text style={styles.detailText}>ID: {item.id_commandeachat} • Supplier: {item.id_fournisseur}</Text>
         <Text style={styles.commandeAmount}>{item.montant_totale} MAD</Text>
       </View>
       <TouchableOpacity style={styles.viewButton} onPress={() => handleUsers(item)}>
-        <Text style={styles.viewButtonText}>Générer PDF</Text>
+        <Text style={styles.viewButtonText}>Generate PDF</Text>
         <Ionicons name="document-text-outline" size={18} color="#007AFF" />
       </TouchableOpacity>
     </TouchableOpacity>
@@ -205,7 +206,7 @@ const VosCommandes = () => {
         <Ionicons name="search" size={20} color="#8e8e93" />
         <TextInput 
           style={styles.searchInput}
-          placeholder="Rechercher une commande"
+          placeholder="Research an order"
           placeholderTextColor="#8e8e93"
           onChangeText={(text) => setSearchQuery(text)}
           value={searchQuery}
@@ -222,7 +223,7 @@ const VosCommandes = () => {
       />
       
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Vos Commandes</Text>
+        <Text style={styles.title}>Your Orders</Text>
         <TouchableOpacity style={styles.addButton} onPress={Navigate}>
           <Ionicons name="add-outline" size={24} color="white" />
         </TouchableOpacity>

@@ -36,25 +36,25 @@ const Pay3 = ({route}) => {
     <View style={styles.container}>
             <View>
         <View style={styles.row}>
-          <Text style={styles.text}>Bon: {Bonlivraison.id_bonlivraison} </Text>
+          <Text style={styles.text}>note: {Bonlivraison.id_bonlivraison} </Text>
           <Text style={styles.text}>{Bonlivraison.date_livraison}</Text>
         </View>
         <View style={styles.row}>
-          <Text style={styles.text}>Nom : {Bonlivraison.nom_client}</Text>
-          <Text style={styles.text}>Prenom: {Bonlivraison.prenom_client}</Text>
+          <Text style={styles.text}>First Name : {Bonlivraison.nom_client}</Text>
+          <Text style={styles.text}>Second Name: {Bonlivraison.prenom_client}</Text>
         </View>
-        <Text style={[styles.text, styles.infos]}>Addresse : {Bonlivraison.localisation}</Text>
-        <Text style={[styles.text, styles.infos]}>telephone: {Bonlivraison.telephone_client}</Text>
+        <Text style={[styles.text, styles.infos]}>Address : {Bonlivraison.localisation}</Text>
+        <Text style={[styles.text, styles.infos]}>Phone Number: {Bonlivraison.telephone_client}</Text>
         <View style={styles.row}>
-          <Text style={styles.text}>Commande : {Bonlivraison.id_commande}</Text>
-          <Text style={styles.text}>Livreur : {Bonlivraison.id_vendeur}</Text>
+          <Text style={styles.text}>Order : {Bonlivraison.id_commande}</Text>
+          <Text style={styles.text}>Delivery Person : {Bonlivraison.id_vendeur}</Text>
         </View>
         <View style={styles.row}>
-          <Text style={styles.text}>Montant Total : {montantTotale}</Text>
+          <Text style={styles.text}>Total Amount : {montantTotale}</Text>
         </View>
 
       <View style={styles.radio}>
-        <Text>Methode de paiement:</Text>
+        <Text>Payment Method:</Text>
         <RadioButton.Group onValueChange={handleRadioChange} value={checked}>
           <View>
             <RadioButton.Item label="En espece" value="first" />
@@ -87,7 +87,7 @@ const Pay3 = ({route}) => {
   </View>
 </Modal>:''}
 <TouchableOpacity style={styles.button} onPress={handlevalidate} >
-          <Text style={styles.buttonText}>Valider</Text>
+          <Text style={styles.buttonText}>Validate</Text>
         </TouchableOpacity>
     </View>
     </View>

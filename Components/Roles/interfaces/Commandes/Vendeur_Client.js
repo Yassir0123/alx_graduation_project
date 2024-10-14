@@ -104,35 +104,35 @@ const Vendeur_Client = () => {
           />
           <TextInput
             style={styles.input}
-            placeholder="Nom"
+            placeholder="First Name"
             value={nom}
             onChangeText={setNom}
           />
           <TextInput
             style={styles.input}
-            placeholder="Prenom"
+            placeholder="Second Name"
             value={prenom}
             onChangeText={setPrenom}
           />
           <TextInput
             style={styles.input}
-            placeholder="Adresse"
+            placeholder="Adress"
             value={adresse}
             onChangeText={setAdresse}
           />
           <TextInput
             style={styles.input}
-            placeholder="Localisation"
+            placeholder="Localization"
             value={localisation}
             onChangeText={setLocalisation}
           />
            <TextInput
             style={styles.input}
-            placeholder="Telephone"
+            placeholder="Phone Number"
             value={telephone}
             onChangeText={setTelephone}
           />
-          <Text style={styles.label}>Date de Naissance</Text>
+          <Text style={styles.label}>Entry_Date</Text>
           <View style={styles.dateContainer}>
             <TextInput
               style={styles.dateInput}

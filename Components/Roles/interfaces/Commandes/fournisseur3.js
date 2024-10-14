@@ -74,7 +74,8 @@ const Fournisseur3 = () => {
       if (selectedFournisseur) {
         console.log(selectedFournisseur);
         selectedFournisseur.action = 0;
-        console.log(selectedFournisseur.action);
+        selectedFournisseur.modify = 0;
+        console.log('modify:',selectedFournisseur.modify);
         navigation.navigate('Commande_Fournisseur', { FournisseurData: selectedFournisseur });
       }
     }

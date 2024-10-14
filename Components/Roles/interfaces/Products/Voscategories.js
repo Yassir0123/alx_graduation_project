@@ -54,7 +54,7 @@ const AddCategory = ({ route }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.head}>
-        <Text style={styles.sectionTitle}>Sous Categories</Text>
+        <Text style={styles.sectionTitle}>SubCategories</Text>
         <TouchableOpacity onPress={handleShowAll}>
           <View style={styles.firstButton}>
             <Text style={styles.texts}>See all</Text>

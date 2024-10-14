@@ -66,7 +66,7 @@ const Pay2 = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
-        <Text style={styles.text}>N°Bon de Livraison</Text>
+        <Text style={styles.text}>Note ID</Text>
         <Picker
           style={styles.picker}
           selectedValue={selectedOption}
@@ -80,7 +80,7 @@ const Pay2 = () => {
           ))}
         </Picker>
         <TouchableOpacity style={styles.button} onPress={handleUser}>
-          <Text style={styles.buttonText}>Valider</Text>
+          <Text style={styles.buttonText}>Validate</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

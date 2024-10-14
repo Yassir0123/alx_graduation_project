@@ -15,13 +15,13 @@ const AppNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === 'Fournisseurs') {
+          if (route.name === 'Suppliers') {
             iconName = focused ? 'people' : 'people-outline';
-          } else if (route.name === 'Ajouter Un Produit') {
+          } else if (route.name === 'Add a product') {
             iconName = focused ? 'add-circle' : 'add-circle-outline';
-          } else if (route.name === 'Commande') {
+          } else if (route.name === 'Orders') {
             iconName = focused ? 'clipboard' : 'clipboard-outline';
-          } else if (route.name === 'Alerte') {
+          } else if (route.name === 'Alert') {
             iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
           }
 
@@ -33,10 +33,10 @@ const AppNavigator = () => {
       })}
       initialRouteName="Fournisseurs"
     >
-      <Tab.Screen name="Fournisseurs" component={VosFournisseurs} />
-      <Tab.Screen name="Ajouter Un Produit" component={Newproductroutes} />
-      <Tab.Screen name="Commande" component={FourCommandeRoutes} />
-      <Tab.Screen name="Alerte" component={Message} />
+      <Tab.Screen name="Suppliers" component={VosFournisseurs} />
+      <Tab.Screen name="Add a product" component={Newproductroutes} />
+      <Tab.Screen name="Orders" component={FourCommandeRoutes} />
+      <Tab.Screen name="Alert" component={Message} />
     </Tab.Navigator>
   );
 };

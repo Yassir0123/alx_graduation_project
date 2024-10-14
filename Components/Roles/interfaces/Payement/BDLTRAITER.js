@@ -64,52 +64,48 @@ const Atraiter = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Commande A Traiter</Text>
+      <Text style={styles.heading}>Orders to process</Text>
       {data && data.length > 0 ? ( // Check if data is not undefined and has items
         data.map((item) => (
           <View key={item.id_commande} style={styles.card}>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>id_bonlivraison:</Text>
+              <Text style={styles.label}>Note_ID:</Text>
               <Text style={styles.value}>{item.id_bonlivraison}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>id_operateur:</Text>
+              <Text style={styles.label}>Operator_Id:</Text>
               <Text style={styles.value}>{item.id_operateur}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Id_commande:</Text>
+              <Text style={styles.label}>Order Id:</Text>
               <Text style={styles.value}>{item.id_commande}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Id_commerciale:</Text>
+              <Text style={styles.label}>Commercial ID:</Text>
               <Text style={styles.value}>{item.id_commerciale}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Id_vendeur:</Text>
-              <Text style={styles.value}>{item.id_vendeur}</Text>
-            </View>
-            <View style={styles.infoContainer}>
-              <Text style={styles.label}>Id_client:</Text>
+              <Text style={styles.label}>Client Id:</Text>
               <Text style={styles.value}>{item.id_client}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Nom:</Text>
+              <Text style={styles.label}>First Name:</Text>
               <Text style={styles.value}>{item.nom_client}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Prenom:</Text>
+              <Text style={styles.label}>Second Name:</Text>
               <Text style={styles.value}>{item.prenom_client}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Localisation:</Text>
+              <Text style={styles.label}>Localization:</Text>
               <Text style={styles.value}>{item.localisation}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Montant_total:</Text>
+              <Text style={styles.label}>Total Amount:</Text>
               <Text style={styles.value}>{item.montant_totale}</Text>
             </View>
             <View style={styles.infoContainer}>
-              <Text style={styles.label}>Date_livraison:</Text>
+              <Text style={styles.label}>Delivery Date:</Text>
               <Text style={styles.value}>{item.date_livraison}</Text>
             </View>
             <View style={styles.buttonContainer}>

@@ -61,13 +61,13 @@ const VosFournisseurs = () => {
           </View>
         </View>
         <View style={styles.details}>
-          <Text style={styles.detailText}>Email Contact: {item.email_contact}</Text>
-          <Text style={styles.detailText}>Téléphone Contact: {item.telephone_contact}</Text>
-          <Text style={styles.detailText}>Catégorie Produit: {item.categorie_produit}</Text>
-          <Text style={styles.detailText}>Adresse: {item.adresse}</Text>
-          <Text style={styles.detailText}>Ville: {item.ville}</Text>
-          <Text style={styles.detailText}>Pays: {item.pays}</Text>
-          <Text style={styles.detailText}>Code Postal: {item.code_postal}</Text>
+          <Text style={styles.detailText}>Email: {item.email_contact}</Text>
+          <Text style={styles.detailText}>Phone Number: {item.telephone_contact}</Text>
+          <Text style={styles.detailText}>Product Category: {item.categorie_produit}</Text>
+          <Text style={styles.detailText}>Adress: {item.adresse}</Text>
+          <Text style={styles.detailText}>City: {item.ville}</Text>
+          <Text style={styles.detailText}>Country: {item.pays}</Text>
+          <Text style={styles.detailText}>Zip Code: {item.code_postal}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -80,18 +80,14 @@ const VosFournisseurs = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.headingContainer}>
-        <Text style={styles.heading}>Vos Fournisseurs</Text>
-        <TouchableOpacity style={styles.button} onPress={Navigate}>
-          <View style={styles.buttonContent}>
-            <Text style={{ color: 'white', fontWeight: 'bold' }}>Add</Text>
-          </View>
-        </TouchableOpacity>
+        <Text style={styles.heading}>Your Suppliers</Text>
+
       </View>
       <View style={styles.searchBar}>
         <FontAwesome name="search" size={20} color="#6D28D9" />
         <TextInput
           style={styles.searchInput}
-          placeholder="chercher par entreprise ou ID"
+          placeholder="Search by Supplier name or ID"
           value={searchText}
           onChangeText={(text) => setSearchText(text)}
         />

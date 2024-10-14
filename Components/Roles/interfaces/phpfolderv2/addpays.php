@@ -31,6 +31,9 @@ $sql2 = $pdo->prepare('
     INSERT INTO bonvalider (id_bonlivraison, id_commande, id_operateur, id_livreur, id_commerciale, id_vendeur, id_client, nom_client, prenom_client, localisation, date_livraison, telephone_client, montant_totale) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 ');
+$sql = $pdo->prepare('update bonlivraison set seeable = 1 where id_bonlivraison = ?');
+// Execute SQL statements
+$sql->execute([$bonvaliderData['id_bonlivraison']]);
 
 // Bind parameters for the paiement table
 $sql1->execute([

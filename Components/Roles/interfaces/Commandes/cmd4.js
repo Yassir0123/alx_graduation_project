@@ -19,7 +19,7 @@ const [emails,setEmail]=useState('');
   return (
     <ScrollView style={styles.container}>
       <View style={styles.card}>
-        <Text style={styles.heading}>Votre Command a été validé</Text>
+        <Text style={styles.heading}>Your order has been Validated</Text>
         <View style={styles.imageContainer}>
           <Image
             source={{ uri: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?cs=srgb&dl=pexels-ash-122861-376464.jpg&fm=jpg' }} // Replace with your image URL

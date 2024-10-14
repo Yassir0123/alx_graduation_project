@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, StatusBar, Dimensions, Animated } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, StatusBar, Dimensions, Animated, Modal } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
@@ -19,6 +19,9 @@ const VosCommandes = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [scrollY] = useState(new Animated.Value(0));
   const [statistics, setStatistics] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [validatedOrder, setValidatedOrder] = useState(null);
+
   const Navigate = useCallback(() => { 
     navigation.navigate('Client');
   }, [navigation]);
@@ -97,6 +100,7 @@ const VosCommandes = () => {
       montanttotale: user.montant_totale,
       id_commerciale: user.id_commerciale,
       action: 1,
+      modify: 1,
     };
   
     if (action === 0) {
@@ -106,7 +110,7 @@ const VosCommandes = () => {
       const email = await AsyncStorage.getItem('email');
    
       const response = await axios.post(
-'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addcommande.php',
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addcommande.php',
         JSON.stringify(clientData),
         {
           headers: {
@@ -115,7 +119,9 @@ const VosCommandes = () => {
         }
       );
       console.log(response.data);
-    } else if (action === 2) {
+      setValidatedOrder(user);
+      setModalVisible(true);
+      } else if (action === 2) {
       let responses = [];
   
       try {
@@ -217,19 +223,18 @@ const VosCommandes = () => {
       <View style={styles.actionButtons}>
         {!role && (
           <TouchableOpacity style={styles.validateButton} onPress={() => handleUser(item, 1)}>
-            <Text style={styles.validateButtonText}>Valider</Text>
+            <Text style={styles.validateButtonText}>Validate</Text>
           </TouchableOpacity>
         )}
         <TouchableOpacity style={styles.pdfButton} onPress={() => handleUser(item, 2)}>
-          <Text style={styles.pdfButtonText}>Voir PDF</Text>
+          <Text style={styles.pdfButtonText}>View PDF</Text>
         </TouchableOpacity>
       </View>
     </TouchableOpacity>
   );
-
   const stats = [
     { title: "Total Cmds", value: data.length.toString(), icon: "cart-outline", colors: ["#FF9FF3", "#FF6B6B"] },
-    { title: "Total Montants", value: `€${data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2)}`, icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
+    { title: "Total Amount", value: `€${data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2)}`, icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
   ];
 
   const renderStatItem = ({ item }) => (
@@ -246,7 +251,7 @@ const VosCommandes = () => {
         <Ionicons name="search" size={20} color="#8e8e93" />
         <TextInput 
           style={styles.searchInput}
-          placeholder="Rechercher une commande"
+          placeholder="Research an order"
           placeholderTextColor="#8e8e93"
           onChangeText={(text) => setSearchQuery(text)}
           value={searchQuery}
@@ -263,7 +268,7 @@ const VosCommandes = () => {
       />
       
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Vos commandes</Text>
+        <Text style={styles.title}>Your orders</Text>
         <TouchableOpacity style={styles.addButton} onPress={Navigate}>
           <Text style={styles.addButtonText}>Add</Text>
         </TouchableOpacity>
@@ -288,9 +293,38 @@ const VosCommandes = () => {
         )}
         scrollEventThrottle={16}
       />
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Order Validated!</Text>
+            {validatedOrder && (
+              <View>
+                <Text>Order ID: {validatedOrder.id_commande}</Text>
+                <Text>Client: {validatedOrder.nom_client} {validatedOrder.prenom_client}</Text>
+                <Text>Amount: {validatedOrder.montant_totale} MAD</Text>
+              </View>
+            )}
+            <TouchableOpacity
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -439,11 +473,53 @@ const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 8,
   },
+  
   pdfButtonText: {
     color: 'white',
     fontWeight: '600',
     textAlign: 'center',
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+    marginTop: 15,
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 18
+  }
 });
 
 export default VosCommandes;

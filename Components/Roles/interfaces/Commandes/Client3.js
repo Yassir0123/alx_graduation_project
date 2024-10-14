@@ -77,6 +77,7 @@ const Client3 = () => {
       if (selectedClient) {
         console.log(selectedClient);
         selectedClient.action = 0;
+        selectedClient.modify = 0;
         console.log(selectedClient.action);
         navigation.navigate('Commanded', { clientData: selectedClient });
       }
@@ -95,7 +96,7 @@ const Client3 = () => {
         <Ionicons name="search" size={20} color="#8e8e93" />
         <TextInput 
           style={styles.searchInput}
-          placeholder="Rechercher un client"
+          placeholder="Research a client"
           placeholderTextColor="#8e8e93"
           onChangeText={(text) => setSearchQuery(text)}
           value={searchQuery}
@@ -103,7 +104,7 @@ const Client3 = () => {
       </View>
       
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Sélectionner un client</Text>
+        <Text style={styles.title}>Select un client</Text>
       </View>
     </>
   );
@@ -150,7 +151,7 @@ const Client3 = () => {
       </View>
       
       <TouchableOpacity style={styles.button} onPress={handleUser}>
-        <Text style={styles.buttonText}>Valider</Text>
+        <Text style={styles.buttonText}>Validate</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

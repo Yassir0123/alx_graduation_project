@@ -36,7 +36,7 @@ const BDL1 = () => {
         };
 
         const response = await axios.post(
-          `http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getbons.php`,
+          `http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getbons.php`,
           JSON.stringify(clientData),
           {
             headers: {
@@ -54,7 +54,7 @@ const BDL1 = () => {
   const handlePress = async (user) => {
     try {
       responses = await axios.post(
-        'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
         {
           idcmdcount: user.id_commande,
         },
@@ -82,37 +82,37 @@ const BDL1 = () => {
         </style>
       </head>
       <body>
-        <h1>Bons ${user.id_bonlivraison} Details</h1>
+        <h1>Note ${user.id_bonlivraison} Details</h1>
         <table>
           <tr>
-            <td><strong>Commande </strong> ${user.id_commande}</td>
+            <td><strong>Order </strong> ${user.id_commande}</td>
             <td><strong>ID Client:</strong> ${user.id_client}</td>
           </tr>
           <tr>
-          <td><strong>Operateur: </strong> ${user.id_operateur}</td>
-          <td><strong>ID Livreur:</strong> ${user.id_livreur}</td>
+          <td><strong>Operator: </strong> ${user.id_operateur}</td>
+          <td><strong>Delivery Person:</strong> ${user.id_livreur}</td>
         </tr>
           <tr>
-            <td><strong>Nom:</strong> ${user.nom_client}</td>
-            <td><strong>Prénom:</strong> ${user.prenom_client}</td>
+            <td><strong>First Name:</strong> ${user.nom_client}</td>
+            <td><strong>Second Name:</strong> ${user.prenom_client}</td>
           </tr>
           <tr>
-            <td><strong>Localisation:</strong> ${user.localisation}</td>
-            <td><strong>Montant Total:</strong> ${user.montant_totale}</td>
+            <td><strong>Localization:</strong> ${user.localisation}</td>
+            <td><strong>Total Amount:</strong> ${user.montant_totale}</td>
           </tr>
           <tr>
-            <td><strong>Date Livraison:</strong> ${user.date_livraison}</td>
+            <td><strong>Delivery Date:</strong> ${user.date_livraison}</td>
           </tr>
         </table>
-        <h2>Produits</h2>
+        <h2>Products</h2>
         <table>
           <thead>
             <tr>
-              <th>id_produit</th>
-              <th>libeller</th>
-              <th>nom_categorie</th>
-              <th>quantiter</th>
-              <th>prix</th>
+              <th>id_product</th>
+              <th>label</th>
+              <th>Category_name</th>
+              <th>quantity</th>
+              <th>price</th>
               <th>tva</th>
             </tr>
           </thead>
@@ -142,8 +142,8 @@ const BDL1 = () => {
   };
 
   const stats = [
-    { title: "Total Bons", value: data.length.toString(), icon: "document-text-outline", colors: ["#FF9FF3", "#FF6B6B"] },
-    { title: "Montant Total", value: data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2), icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
+    { title: "Total Notes", value: data.length.toString(), icon: "document-text-outline", colors: ["#FF9FF3", "#FF6B6B"] },
+    { title: "Total Amounts", value: data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2), icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
   ];
 
   const renderStatItem = ({ item }) => (
@@ -165,7 +165,7 @@ const BDL1 = () => {
         <Text style={styles.bonAmount}>{item.montant_totale} MAD</Text>
       </View>
       <TouchableOpacity style={styles.viewButton}>
-        <Text style={styles.viewButtonText}>Voir les détails</Text>
+        <Text style={styles.viewButtonText}>Generate PDF</Text>
         <Ionicons name="arrow-forward" size={18} color="#007AFF" />
       </TouchableOpacity>
     </TouchableOpacity>
@@ -177,7 +177,7 @@ const BDL1 = () => {
         <Ionicons name="search" size={20} color="#8e8e93" />
         <TextInput 
           style={styles.searchInput}
-          placeholder="Rechercher un bon de livraison"
+          placeholder="Research your note"
           placeholderTextColor="#8e8e93"
           onChangeText={(text) => setSearchQuery(text)}
           value={searchQuery}
@@ -194,7 +194,7 @@ const BDL1 = () => {
       />
       
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Vos bons</Text>
+        <Text style={styles.title}>Your Notes</Text>
         <TouchableOpacity style={styles.addButton} onPress={Navigate}>
           <Text style={styles.addButtonText}>Add</Text>
         </TouchableOpacity>

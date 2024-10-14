@@ -111,54 +111,54 @@ const Ajout_Fournisseur = () => {
         <View style={styles.formContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Nom de l'entreprise"
+            placeholder="Company name"
             value={nom_entreprise}
             onChangeText={setNomEntreprise}
           />
           <TextInput
             style={styles.input}
-            placeholder="Email de contact"
+            placeholder="Email"
             value={email_contact}
             onChangeText={setEmailContact}
           />
           <TextInput
             style={styles.input}
-            placeholder="Catégorie"
+            placeholder="Category"
             value={categorie}
             onChangeText={setCategorie}
           />
           <TextInput
             style={styles.input}
-            placeholder="Téléphone de contact"
+            placeholder="Phone Number"
             value={telephone_contact}
             onChangeText={setTelephoneContact}
           />
           <TextInput
             style={styles.input}
-            placeholder="Adresse"
+            placeholder="Adress"
             value={adresse}
             onChangeText={setAdresse}
           />
           <TextInput
             style={styles.input}
-            placeholder="Ville"
+            placeholder="City"
             value={ville}
             onChangeText={setVille}
           />
           <TextInput
             style={styles.input}
-            placeholder="Pays"
+            placeholder="Country"
             value={pays}
             onChangeText={setPays}
           />
           <TextInput
             style={styles.input}
-            placeholder="Code Postal"
+            placeholder="Zip Code"
             keyboardType='numeric'
             value={code_postal}
             onChangeText={setCodePostal}
           />
-          <Text style={styles.label}>Date de création</Text>
+          <Text style={styles.label}>Creation Date</Text>
           <TouchableOpacity onPress={showDatePicker}>
             <TextInput
               style={styles.input}
@@ -174,10 +174,10 @@ const Ajout_Fournisseur = () => {
           />
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.prevButton}>
-              <Text style={styles.prevButtonText}>Retour</Text>
+              <Text style={styles.prevButtonText}>Go Back</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.nextButton} onPress={() => Navigate()}>
-              <Text style={styles.nextButtonText}>Valider</Text>
+              <Text style={styles.nextButtonText}>Validate</Text>
             </TouchableOpacity>
           </View>
         </View>

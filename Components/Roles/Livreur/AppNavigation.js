@@ -17,13 +17,13 @@ const AppNavigator = () => {
                     let iconName;
 
                     switch (route.name) {
-                        case 'Paiement':
+                        case 'Payments':
                             iconName = 'cash'; // Change this based on your preferred icon
                             break;
-                        case 'Bon de Livraison  a Traiter':
+                        case 'Delivery Slips to process':
                             iconName = 'document-text'; // Change this based on your preferred icon
                             break;
-                        case 'Alerte':
+                        case 'Alert':
                             iconName = 'chatbubble'; // Change this based on your preferred icon
                             break;
                         default:
@@ -35,9 +35,9 @@ const AppNavigator = () => {
                 },
             })}
         >
-            <Tab.Screen name="Paiement" component={Payrout} />
-            <Tab.Screen name="Bon de Livraison a Traiter" component={Atraiter} />
-            <Tab.Screen name="Alerte" component={Message} />
+            <Tab.Screen name="Payments" component={Payrout} />
+            <Tab.Screen name="Delivery Slips to process" component={Atraiter} />
+            <Tab.Screen name="Alert" component={Message} />
         </Tab.Navigator>
     );
 }

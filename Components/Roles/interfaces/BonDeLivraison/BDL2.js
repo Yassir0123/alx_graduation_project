@@ -22,8 +22,8 @@ const BDL2 = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreur.php');
-        const responses = await axios.get('http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getidcmd2.php');
+        const response = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreur.php');
+        const responses = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getidcmd2.php');
         console.log(response.data.message);
         console.log(responses.data.message);
         setData(responses.data.userData);
@@ -45,25 +45,25 @@ const BDL2 = () => {
   console.log(selectedLivreurObj.id_livreur);
       // Make a GET request to the PHP endpoint with the selectedCommande ID
       const response = await axios.post(
-        'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getcmdinfos.php',
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcmdinfos.php',
         {
           id: selectedCommandeObj.id_commande, // Send only the ID value
         }
       );
       const responses = await axios.post(
-        'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreurbyid.php',
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreurbyid.php',
         {
           id: selectedLivreurObj.id_livreur, // Send only the ID value
         }
       );
       const responser = await axios.post(
-        'http://192.168.11.106/logo/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+        'http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
         {
           idcmdcount: selectedCommandeObj.id_commande, // Send only the ID value
         }
       );
       const responsed = await axios.get(
-        'http://192.168.11.106/alx/alx/Components/Roles/interfaces/phpfolderv2/newbon.php',
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/newbon.php',
       );
       // Check if the request was successful and the response contains data
        console.log('lol')
@@ -101,7 +101,7 @@ const BDL2 = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.form}>
-        <Text style={styles.text}>N°Commande</Text>
+        <Text style={styles.text}>Order ID</Text>
         <Picker
           style={styles.picker}
           selectedValue={selectedCommande}
@@ -119,7 +119,7 @@ const BDL2 = () => {
             <Picker.Item label="No data for now" value="" />
           )}
         </Picker>
-        <Text style={styles.text}>N°Livreur</Text>
+        <Text style={styles.text}>Delivery_Person ID</Text>
         <Picker
           style={styles.picker}
           selectedValue={selectedLivreur}
@@ -138,7 +138,7 @@ const BDL2 = () => {
           )}
         </Picker>
         <TouchableOpacity style={styles.button} onPress={handleUser}>
-          <Text style={styles.buttonText}>Valider</Text>
+          <Text style={styles.buttonText}>Validate</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

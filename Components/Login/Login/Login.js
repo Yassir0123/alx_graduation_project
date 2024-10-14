@@ -96,7 +96,7 @@ const saveUserData = async (id, email,nom,prenom) => {
             {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
 
            <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
-        <Text style={styles.buttonText}>Connectez-vous</Text>
+        <Text style={styles.buttonText}>Connect</Text>
       </TouchableOpacity>
         </View>
       </View>

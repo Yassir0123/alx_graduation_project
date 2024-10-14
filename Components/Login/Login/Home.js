@@ -53,7 +53,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Animated.Text style={[styles.bienvenue, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}>
-        Bienvenue
+        Welcome
       </Animated.Text>
       <Animated.Image
         source={require('../img/Overwhelmed-bro.png')}

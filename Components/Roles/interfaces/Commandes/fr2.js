@@ -2,25 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import axios from 'axios';
+
 // Item component
 const Item = ({ id, name, price, quantity, img, tva, onAddButtonPress }) => (
   <View style={styles.productCard}>
     <View style={styles.imageContainer}>
       <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${img}` }} style={styles.productImage} />
-      {quantity > 0 && quantity < 10 && (
-        <View style={styles.almostDoneBar}>
-          <Text style={styles.almostDoneText}>Almost done</Text>
-        </View>
-      )}
     </View>
     <Text style={styles.productName}>{name}</Text>
     {price && <Text style={styles.productPrice}>{price} MAD</Text>}
-    {quantity <= 0 && <Text style={styles.outOfStock}>Out of Stock</Text>}
-    {quantity > 0 && (
-      <TouchableOpacity style={styles.addButton} onPress={() => onAddButtonPress({ id, name, price, quantity, img, tva })}>
-        <Text style={styles.addButtonText}>+</Text>
-      </TouchableOpacity>
-    )}
+    <TouchableOpacity style={styles.addButton} onPress={() => onAddButtonPress({ id, name, price, quantity, img, tva })}>
+      <Text style={styles.addButtonText}>+</Text>
+    </TouchableOpacity>
   </View>
 );
 
@@ -241,19 +234,6 @@ const styles = StyleSheet.create({
     height: 150,
     resizeMode: 'contain',
   },
-  almostDoneBar: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(250, 128, 114, 0.7)',
-    paddingVertical: 5,
-  },
-  almostDoneText: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
   productName: {
     fontSize: 14,
     marginTop: 5,
@@ -261,11 +241,6 @@ const styles = StyleSheet.create({
   productPrice: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginTop: 5,
-  },
-  outOfStock: {
-    fontSize: 14,
-    color: 'red',
     marginTop: 5,
   },
   addButton: {

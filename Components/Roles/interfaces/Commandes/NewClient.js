@@ -15,10 +15,10 @@ const NewClient = () => {
     <View style={styles.container}>
       <View>
         <TouchableOpacity style={styles.button} onPress={NavigateNouveau}>
-          <Text style={styles.buttonText}>Nouveau-Client</Text>
+          <Text style={styles.buttonText}>New Client</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={Navigate}>
-          <Text style={styles.buttonText}>Client-Existant</Text>
+          <Text style={styles.buttonText}>Existing Client</Text>
         </TouchableOpacity>
       </View>
     </View>

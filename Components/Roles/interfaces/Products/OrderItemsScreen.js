@@ -18,6 +18,7 @@ import {
   TextInput,
   Menu,
   ActivityIndicator,
+  Text,
 } from 'react-native-paper';
 import { Ionicons, FontAwesome, AntDesign, Feather } from '@expo/vector-icons';
 import axios from 'axios';
@@ -155,7 +156,7 @@ const OrderItemsScreen = ({route}) => {
     setEditModalVisible(true);
   };
 
-  const handleSave = async (editedProduct) => {
+  const handleSave = async (editedProduct, retriesLeft = 3) => {
     try {
       setLoading(true);
       let imageUrl = editedProduct.image;
@@ -189,7 +190,8 @@ const OrderItemsScreen = ({route}) => {
           throw new Error(`Image upload failed: ${imageResponseData.message}`);
         }
       }
-  
+
+      console.log('edit : ', editedProduct)
       const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updateproduit.php', {
         id_produit: editedProduct.id_produit,
         quantiter_stock: editedProduct.quantiter_stock,
@@ -207,10 +209,13 @@ const OrderItemsScreen = ({route}) => {
         throw new Error(`Failed to update product: ${response.data.message}`);
       }
     } catch (error) {
-      // console.error('Error updating product:', error);
-      Alert.alert('Error', 'Failed to update product. Please try again.');
-    } finally {
-      setLoading(false);
+      if (retriesLeft > 0) {
+        console.log(`Retrying... (${retriesLeft} attempts left)`);
+        setTimeout(() => handleSave(editedProduct, retriesLeft - 1), 1000);
+      } else {
+        Alert.alert('Error', 'Failed to update product after multiple attempts. Please try again later.');
+        setLoading(false);
+      }
     }
   };
 
@@ -350,7 +355,10 @@ const OrderItemsScreen = ({route}) => {
       <PaperProvider theme={theme}>
         <ScrollView style={styles.container}>
           {loading ? (
-            <ActivityIndicator size="large" color={theme.colors.primary} style={styles.loader} />
+            <View style={styles.loaderContainer}>
+              <ActivityIndicator size="large" color={theme.colors.primary} />
+              <Text style={styles.loaderText}>Updating product...</Text>
+            </View>
           ) : (
             <Animated.View style={[styles.content, { transform: [{ translateY: slideAnim }] }]}>
               <Card style={styles.card}>
@@ -411,6 +419,7 @@ const OrderItemsScreen = ({route}) => {
           )}
         </ScrollView>
 
+
         <Portal>
           <EditProductModal
             visible={editModalVisible}
@@ -419,7 +428,6 @@ const OrderItemsScreen = ({route}) => {
             onSave={handleSave}
           />
         </Portal>
-
       </PaperProvider>
     </OrderContext.Provider>
   );
@@ -517,11 +525,16 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     marginTop: 10,
   },
-  loader: {
+  loaderContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 50,
+  },
+  loaderText: {
+    marginTop: 10,
+    fontSize: 16,
+    color: '#333',
   },
 });
 

@@ -174,7 +174,7 @@ const AddProducts = ({ navigation }) => {
 
       <ScrollView>
         <View style={styles.heads}>
-          <Text style={styles.sectionTitle}>Produits</Text>
+          <Text style={styles.sectionTitle}>Products</Text>
           <TouchableOpacity style={styles.firstbutton} onPress={() => setAddModalVisible(true)}>
             <Text style={styles.texts}>Add</Text>
           </TouchableOpacity>

@@ -13,7 +13,7 @@ try {
     $idligne = $data['id'];
 
     // Fetch product data with category names
-    $sql = $pdo->prepare('SELECT p.id_paiement as id_paiement, p.id_bonlivraison as id_bonlivraison, p.id_livreur as id_livreur, p.date_paiement as date_paiement, p.montant_totale as montant_totale, p.moyen_paiement as moyen_paiement, p.id_client as id_client, p.nom_client as nom_client, p.prenom_client as prenom_client, p.telephone_client as telephone_client, l.nom as nom_livreur, l.prenom as prenom FROM paiement p, livreur l WHERE p.id_livreur=? AND p.id_livreur=l.id_livreur ORDER BY p.date_paiement ASC LIMIT 5');
+    $sql = $pdo->prepare('SELECT p.id_paiement as id_paiement, p.id_bonlivraison as id_bonlivraison, p.id_livreur as id_livreur, p.date_paiement as date_paiement, p.montant_totale as montant_totale, p.moyen_paiement as moyen_paiement, p.id_client as id_client, p.nom_client as nom_client, p.prenom_client as prenom_client, p.telephone_client as telephone_client, l.nom as nom_livreur, l.prenom as prenom FROM paiement p, livreur l WHERE p.id_livreur=? AND p.id_livreur=l.id_livreur ORDER BY p.date_paiement DESC LIMIT 5');
     $sql->execute([$idligne]);
     $userData = $sql->fetchAll(PDO::FETCH_ASSOC);
 

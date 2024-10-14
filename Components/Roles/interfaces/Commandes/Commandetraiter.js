@@ -67,29 +67,29 @@ const Atraiter = () => {
           <table>
             <tr>
               <td><strong>ID:</strong> ${user.id_commande}</td>
-              <td><strong>ID Client:</strong> ${user.id_client}</td>
+              <td><strong>Client ID:</strong> ${user.id_client}</td>
             </tr>
             <tr>
-              <td><strong>Nom:</strong> ${user.nom_client}</td>
-              <td><strong>Prénom:</strong> ${user.prenom_client}</td>
+              <td><strong>First Name:</strong> ${user.nom_client}</td>
+              <td><strong>Second Name:</strong> ${user.prenom_client}</td>
             </tr>
             <tr>
-              <td><strong>Localisation:</strong> ${user.localisation}</td>
-              <td><strong>Montant Total:</strong> ${user.montant_totale}</td>
+              <td><strong>Localization:</strong> ${user.localisation}</td>
+              <td><strong>Total Amount:</strong> ${user.montant_totale}</td>
             </tr>
             <tr>
-              <td><strong>Date Livraison:</strong> ${user.date_livraison}</td>
+              <td><strong>Deliery Date:</strong> ${user.date_livraison}</td>
             </tr>
           </table>
-          <h2>Produits</h2>
+          <h2>Products</h2>
           <table>
             <thead>
               <tr>
-                <th>id_produit</th>
-                <th>libeller</th>
-                <th>nom_categorie</th>
-                <th>quantiter</th>
-                <th>prix</th>
+                <th>id_product</th>
+                <th>label</th>
+                <th>Cateogry_name</th>
+                <th>quantity</th>
+                <th>price</th>
                 <th>tva</th>
               </tr>
             </thead>
@@ -122,45 +122,41 @@ const Atraiter = () => {
   };
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Commandes A Traiter</Text>
+      <Text style={styles.heading}>Orders To Process</Text>
       {data && data.length > 0 ? (
         data.map((item) => (
           <TouchableOpacity key={item.id_commande} onPress={() => handlePress(item)}>
             <View style={styles.card}>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Id_commande:</Text>
+                <Text style={styles.label}>Order ID:</Text>
                 <Text style={styles.value}>{item.id_commande}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Id_commerciale:</Text>
+                <Text style={styles.label}>Commerciale Id:</Text>
                 <Text style={styles.value}>{item.id_commerciale}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Id_vendeur:</Text>
-                <Text style={styles.value}>{item.id_vendeur}</Text>
-              </View>
-              <View style={styles.infoContainer}>
-                <Text style={styles.label}>Id_client:</Text>
+                <Text style={styles.label}>Client Id:</Text>
                 <Text style={styles.value}>{item.id_client}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Nom:</Text>
+                <Text style={styles.label}>First Name:</Text>
                 <Text style={styles.value}>{item.nom_client}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Prenom:</Text>
+                <Text style={styles.label}>Second Name:</Text>
                 <Text style={styles.value}>{item.prenom_client}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Localisation:</Text>
+                <Text style={styles.label}>Localization:</Text>
                 <Text style={styles.value}>{item.localisation}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Montant_total:</Text>
+                <Text style={styles.label}>Total Amount:</Text>
                 <Text style={styles.value}>{item.montant_totale}</Text>
               </View>
               <View style={styles.infoContainer}>
-                <Text style={styles.label}>Date_livraison:</Text>
+                <Text style={styles.label}>Delivery Date:</Text>
                 <Text style={styles.value}>{item.date_livraison}</Text>
               </View>
             

@@ -16,7 +16,8 @@ try {
     if ($idcmd !== null) {
         $sql = $pdo->prepare('INSERT INTO lignecommande (id_commande, libeller, quantiter, prix, nom_categorie, tva, id_produit) VALUES (?, ?, ?, ?, ?, ?, ?)');
         $sql->execute([$idcmd, $libeller, $quantiter, $prix_ht, $category, $tva, $idprod]);
-        
+        $sql = $pdo->prepare('update produit set quantiter_stock=quantiter_stock-? where id_produit=?');
+        $sql->execute([$quantiter,$idprod]);
         // Return a success message or the newly inserted ID if needed
         echo json_encode(array('message' => 'Data inserted successfully'));
     } else {
@@ -26,4 +27,3 @@ try {
     echo json_encode(array('error' => 'Database error: ' . $e->getMessage()));
 }
 ?>
-

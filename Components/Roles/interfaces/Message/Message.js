@@ -40,7 +40,7 @@ const App = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.transactionHeader}>
-        <Text style={styles.transactionTitle}>Produits</Text>
+        <Text style={styles.transactionTitle}>Products</Text>
         <View style={styles.bellContainer}>
           <FontAwesome5 name="bell" size={24} color="#5a67d8" />
           <View style={styles.counter}>
@@ -52,7 +52,7 @@ const App = () => {
       {products.length > 0 ? (
         products.map((product, index) => (
           <View key={index} style={styles.transactionItem}>
-            <Image source={{ uri: `http://192.168.11.106/alx/alx/Components/Roles/interfaces/Products/${product.image}` }} style={styles.productImage} />
+            <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${product.image}` }} style={styles.productImage} />
             <View style={styles.transactionDetails}>
               <Text style={styles.transactionName}>{product.libeller}</Text>
               <Text style={styles.transactionPrice}>{product.quantiter_stock <= 0 ? 'Out of stock' : product.quantiter_stock+' Left' } </Text>

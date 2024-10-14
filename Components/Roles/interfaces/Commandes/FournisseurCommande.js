@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, StatusBar } from 'react-native';
+import React, { useEffect, useState, useCallback } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, SafeAreaView, FlatList, StatusBar, Modal, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
@@ -16,39 +16,43 @@ const FournisseurCommande = () => {
   const [roleUser, setRoleUser] = useState();
   const [editedData, setEditedData] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [validating, setValidating] = useState(false);
+
+  const fetchData = useCallback(async () => {
+    const userId = await AsyncStorage.getItem('userId');
+    const email = await AsyncStorage.getItem('email');
+    const emailParts = email.split('@');
+    const domain = emailParts[1];
+    setRoleUser(domain);
+
+    try {
+      const response = await axios.post(
+        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommandtoday.php',
+        {
+          userId: userId,
+        },
+        {
+          responseType: 'json',
+        }
+      );
+      if (response.data.message === 'got data') {
+        setData(response.data.userData);
+      } else {
+        console.log('nothing');
+      }
+
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const userId = await AsyncStorage.getItem('userId');
-      const email = await AsyncStorage.getItem('email');
-      const emailParts = email.split('@');
-      const domain = emailParts[1];
-      setRoleUser(domain);
-
-      try {
-        const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommandtoday.php',
-          {
-            userId: userId,
-          },
-          {
-            responseType: 'json',
-          }
-        );
-        if (response.data.message === 'got data') {
-          setData(response.data.userData);
-        } else {
-          console.log('nothing');
-        }
-
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const handleUser = async (user) => {
     setEditingUser(user);
@@ -68,24 +72,37 @@ const FournisseurCommande = () => {
     navigation.navigate('Commande_Fournisseur', { FournisseurData: FournisseurData });
   };
 
-  const handleValidate = async (user) => {
-    console.log(user.id_commandeachat);
+  const handleValidatePress = (user) => {
+    setSelectedOrder(user);
+    setModalVisible(true);
+  };
+
+  const handleValidate = async () => {
+    if (!selectedOrder) return;
+    
+    setValidating(true);
     try {
-      const responses = await axios.post(
+      const response = await axios.post(
         'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validerreception.php',
         {
-          userid: user.id_commandeachat,
+          userid: selectedOrder.id_commandeachat,
         },
         {
           responseType: 'json',
         }
       );
-      console.log(responses.data);
+      console.log(response.data);
+      
+      // Refresh the data after validation
+      await fetchData();
     } catch (error) {
       console.error('Error validating:', error);
+    } finally {
+      setValidating(false);
+      setModalVisible(false);
+      setSelectedOrder(null);
     }
   };
-
   const handleUsers = async (user) => {
     try {
       const responses = await axios.post(
@@ -109,34 +126,34 @@ const FournisseurCommande = () => {
             </style>
           </head>
           <body>
-            <h1>Commande Details</h1>
+            <h1>Order Details</h1>
             <table>
               <tr>
-                <td><strong>ID Achat:</strong> ${user.id_achat}</td>
-                <td><strong>ID Commande:</strong> ${user.id_commandeachat}</td>
+                <td><strong>Achat ID:</strong> ${user.id_achat}</td>
+                <td><strong>Order ID:</strong> ${user.id_commandeachat}</td>
               </tr>
               <tr>
-                <td><strong>ID Fournisseur:</strong> ${user.id_fournisseur}</td>
-                <td><strong>Nom Entreprise:</strong> ${user.nom_entreprise}</td>
+                <td><strong>Supplier ID:</strong> ${user.id_fournisseur}</td>
+                <td><strong>Company Name:</strong> ${user.nom_entreprise}</td>
               </tr>
               <tr>
                 <td><strong>Email:</strong> ${user.email}</td>
-                <td><strong>Téléphone:</strong> ${user.telephone}</td>
+                <td><strong>Phone Number:</strong> ${user.telephone}</td>
               </tr>
               <tr>
-                <td><strong>Montant Total:</strong> ${user.montant_totale}</td>
-                <td><strong>Date Livraison:</strong> ${user.date_livraison}</td>
+                <td><strong>Total Amount:</strong> ${user.montant_totale}</td>
+                <td><strong>Delivery Date:</strong> ${user.date_livraison}</td>
               </tr>
             </table>
             <h2>Produits</h2>
             <table>
               <thead>
                 <tr>
-                  <th>ID Produit</th>
-                  <th>Libellé</th>
-                  <th>Catégorie</th>
-                  <th>Quantité</th>
-                  <th>Prix</th> 
+                  <th>ID Product</th>
+                  <th>Label</th>
+                  <th>Category</th>
+                  <th>Quantity</th>
+                  <th>Price</th> 
                   <th>TVA</th>
                 </tr>
               </thead>
@@ -176,17 +193,16 @@ const FournisseurCommande = () => {
     <View style={styles.orderItem}>
       <View style={styles.orderHeader}>
         <Text style={styles.clientName}>{item.nom_entreprise}</Text>
- 
       </View>
       <Text style={styles.orderDate}>{item.date_livraison}</Text>
       <View style={styles.orderDetails}>
-        <Text style={styles.detailText}>ID: {item.id_commandeachat} • Fournisseur: {item.id_fournisseur}</Text>
+        <Text style={styles.detailText}>ID: {item.id_commandeachat} • Supplier: {item.id_fournisseur}</Text>
         <Text style={styles.orderAmount}>{item.montant_totale} MAD</Text>
       </View>
       <View style={styles.actionButtons}>
         {roleUser !== 'vendeur.com' && (
-          <TouchableOpacity style={styles.validateButton} onPress={() => handleValidate(item)}>
-            <Text style={styles.buttonText}>Valider</Text>
+          <TouchableOpacity style={styles.validateButton} onPress={() => handleValidatePress(item)}>
+            <Text style={styles.buttonText}>Validate</Text>
           </TouchableOpacity>
         )}
         <TouchableOpacity style={styles.pdfButton} onPress={() => handleUsers(item)}>
@@ -203,21 +219,54 @@ const FournisseurCommande = () => {
         <Ionicons name="search" size={20} color="#8e8e93" />
         <TextInput 
           style={styles.searchInput}
-          placeholder="Rechercher une commande"
+          placeholder="Research your order"
           placeholderTextColor="#8e8e93"
           onChangeText={(text) => setSearchQuery(text)}
           value={searchQuery}
         />
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Commandes</Text>
+        <Text style={styles.title}>Orders</Text>
       </View>
       <FlatList
         data={filteredData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id_commandeachat.toString()}
         contentContainerStyle={styles.orderList}
+        refreshing={loading}
+        onRefresh={fetchData}
       />
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Are you sure you want to validate this order?</Text>
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
+                style={[styles.modalButton, styles.cancelButton]}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.buttonText}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.modalButton, styles.confirmButton]}
+                onPress={handleValidate}
+                disabled={validating}
+              >
+                {validating ? (
+                  <ActivityIndicator color="#FFFFFF" />
+                ) : (
+                  <Text style={styles.buttonText}>Confirm</Text>
+                )}
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -332,6 +381,55 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  modalButton: {
+    borderRadius: 8,
+    padding: 10,
+    elevation: 2,
+    minWidth: 100,
+  },
+  cancelButton: {
+    backgroundColor: '#FF3B30',
+  },
+  confirmButton: {
+    backgroundColor: '#34C759',
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+
 });
 
 export default FournisseurCommande;

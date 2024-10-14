@@ -310,35 +310,55 @@ const CommandScreen = ({ route }) => {
     const userId = await AsyncStorage.getItem('userId');
     const email = await AsyncStorage.getItem('email');
     const formattedDate = formatDateForSQL(commandDate);
-    
-    console.log(clientData.id_client);
-    console.log(clientData.nom);
-    console.log(clientData.prenom);
-    console.log(clientData.localisation);
-    console.log(formattedDate); // Log the formatted date
-    console.log(totalAmount);
-    console.log(email); 
-    const response = await axios.post(
-    'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmd.php',
-      {
-        id: clientData.id_client,
-        nom: clientData.nom,
-        prenom: clientData.prenom,
-        localisation: clientData.localisation,
-        mt: totalAmount,
-        userid: userId,
-        email: email,
-        date: formattedDate, // Use the formatted date
-      },
-      {
-        responseType: 'json',
+    if(clientData.modify===0){
+      console.log(clientData.id_client);
+      console.log(clientData.nom);
+      console.log(clientData.prenom);
+      console.log(clientData.localisation);
+      console.log(formattedDate); // Log the formatted date
+      console.log(totalAmount);
+      console.log(email); 
+      const response = await axios.post(
+      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmd.php',
+        {
+          id: clientData.id_client,
+          nom: clientData.nom,
+          prenom: clientData.prenom,
+          localisation: clientData.localisation,
+          mt: totalAmount,
+          userid: userId,
+          email: email,
+          date: formattedDate, // Use the formatted date
+        },
+        {
+          responseType: 'json',
+        }
+      );
+      
+      if(response.data.message === 'Data inserted successfully'){
+        navigation.navigate('OrderDelivered');
+      } else {
+        console.log(response.data);
       }
-    );
-    
-    if(response.data.message === 'Data inserted successfully'){
-      navigation.navigate('OrderDelivered');
-    } else {
-      console.log(response.data);
+    }
+    else{ 
+      const response = await axios.post(
+      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updatevalidatecmd.php',
+        {
+          idcmd: clientData.idcmdcount,
+          mt: totalAmount,
+          date: formattedDate, // Use the formatted date
+        },
+        {
+          responseType: 'json',
+        }
+      );
+      
+      if(response.data.message === 'Data inserted successfully'){
+        navigation.navigate('Commandes');
+      } else {
+        console.log(response.data);
+      }
     }
   };
 
@@ -399,10 +419,10 @@ const CommandScreen = ({ route }) => {
         <Animated.View style={[styles.content, { transform: [{ translateY: slideAnim }] }]}>
           <Card style={styles.card}>
             <Card.Content>
-              <Title style={styles.cardTitle}>Command Information</Title>
+              <Title style={styles.cardTitle}>Order Information</Title>
               <Divider style={styles.divider} />
               <View style={styles.commandInfo}>
-                <Paragraph style={styles.commandInfoLabel}>Command ID:</Paragraph>
+                <Paragraph style={styles.commandInfoLabel}>Order ID:</Paragraph>
                 <Paragraph style={styles.commandInfoValue}>CMD{clientData.idcmdcount}</Paragraph>
               </View>
               <View style={styles.commandInfo}>

@@ -223,11 +223,11 @@ const CheckoutScreen = ({ route }) => {
               <Title>Payment Method</Title>
               <RadioButton.Group onValueChange={value => setPaymentMethod(value)} value={paymentMethod}>
                 <View style={styles.radioItem}>
-                  <RadioButton value="Espece" />
+                  <RadioButton value="Cash" />
                   <Paragraph>Espece</Paragraph>
                 </View>
                 <View style={styles.radioItem}>
-                  <RadioButton value="Cheque" />
+                  <RadioButton value="Check" />
                   <Paragraph>Cheque</Paragraph>
                 </View>
               </RadioButton.Group>

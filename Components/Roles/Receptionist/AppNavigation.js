@@ -18,11 +18,11 @@ const AppNavigator = () => {
 
                     if (route.name === 'Home') {
                         iconName = focused ? 'home' : 'home-outline';
-                    } else if (route.name === 'Ajouter une Categorie') {
+                    } else if (route.name === 'Add a Category') {
                         iconName = focused ? 'add-circle' : 'add-circle-outline';
-                    } else if (route.name === 'Alerte') {
+                    } else if (route.name === 'Alert') {
                         iconName = focused ? 'chatbox' : 'chatbox-outline';
-                    } else if (route.name === 'Fournisseurs') {
+                    } else if (route.name === 'Suppliers') {
                         iconName = focused ? 'people' : 'people-outline';
                     }
 
@@ -33,9 +33,9 @@ const AppNavigator = () => {
             })}
         >
             <Tab.Screen name="Home" component={Newproductroutes} />
-            <Tab.Screen name="Ajouter une Categorie" component={Thirdproductsroutes} />
-            <Tab.Screen name="Alerte" component={Message} />
-            <Tab.Screen name="Fournisseurs" component={RecepChain} />
+            <Tab.Screen name="Add a Category" component={Thirdproductsroutes} />
+            <Tab.Screen name="Alert" component={Message} />
+            <Tab.Screen name="Suppliers" component={RecepChain} />
         </Tab.Navigator>
     );
 }

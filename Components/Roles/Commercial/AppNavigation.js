@@ -6,7 +6,6 @@ import VosClients from '../interfaces/Clients/VosClients';
 import Productsroutes from '../interfaces/Products/productsroutes';
 import Message from '../interfaces/Message/Message';
 import CommandeRoute from '../interfaces/Commandes/CommandeRoutes';
-import VosVendeurs from '../interfaces/Commandes/VosVendeurs';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,12 +22,9 @@ const AppNavigator = () => {
             iconName = focused ? 'cube' : 'cube-outline';
           } else if (route.name === 'Message') {
             iconName = focused ? 'chatbubbles' : 'chatbubbles-outline';
-          } else if (route.name === 'Commande') {
+          } else if (route.name === 'Order') {
             iconName = focused ? 'clipboard' : 'clipboard-outline';
-          } else if (route.name === 'Vos_Vendeur') {
-            iconName = focused ? 'people' : 'people-outline';
           }
-
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: 'blue',
@@ -38,8 +34,7 @@ const AppNavigator = () => {
     >
       <Tab.Screen name="Home" component={VosClients} />
       <Tab.Screen name="Stock" component={Productsroutes} />
-      <Tab.Screen name="Commande" component={CommandeRoute} />
-      <Tab.Screen name="Vos_Vendeur" component={VosVendeurs} />
+      <Tab.Screen name="Order" component={CommandeRoute} />
     </Tab.Navigator>
   );
 };

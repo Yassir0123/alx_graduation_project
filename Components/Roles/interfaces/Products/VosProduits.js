@@ -61,8 +61,8 @@ const AddProducts = ({ route }) => {
       <View style={styles.grid}>
         <Text style={styles.itemName}>{item.libeller}</Text>
         <Text style={styles.itemValue}><Text style={styles.itemLabel}>Category: </Text>{item.nom_categorie}</Text>
-        <Text style={[styles.itemValue, styles.blueText]}><Text style={styles.itemLabel}>Prix: </Text>${item.prix_ht}</Text>
-        <Text style={[styles.itemValue, styles.blueText]}><Text style={styles.itemLabel}>Quantiter_stock: </Text>{item.quantiter_stock}</Text>
+        <Text style={[styles.itemValue, styles.blueText]}><Text style={styles.itemLabel}>Price: </Text>${item.prix_ht}</Text>
+        <Text style={[styles.itemValue, styles.blueText]}><Text style={styles.itemLabel}>Stock_quantity: </Text>{item.quantiter_stock}</Text>
         <Text style={[styles.itemValue, styles.blueText]}><Text style={styles.itemLabel}>Tva: </Text>{item.tva}</Text>
       </View>
     </TouchableOpacity>
