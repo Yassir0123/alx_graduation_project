@@ -4,6 +4,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $data = json_decode(file_get_contents("php://input"), true);
     
+    
     $idprod = $data['idprod'];
     $category = $data['category'];
     $libeller = $data['libeller'];

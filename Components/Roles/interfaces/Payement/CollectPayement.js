@@ -17,6 +17,7 @@ export default function CheckoutScreen() {
     });
     const { paymentIntent, ephemeralKey, customer } = await response.json();
 
+    
     return {
       paymentIntent,
       ephemeralKey,

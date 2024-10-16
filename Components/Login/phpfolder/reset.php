@@ -12,6 +12,7 @@ try {
     $sql = null;
     $idField = null;
 
+    
     if ($domain == "vendeur.com" ||$domain=="gmail.com") {
         $sql = $pdo->prepare('UPDATE vendeur SET password = ? WHERE id_vendeur = ?');
         

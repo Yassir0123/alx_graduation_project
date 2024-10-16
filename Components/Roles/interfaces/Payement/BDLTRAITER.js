@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const Atraiter = () => {
   const [data, setData] = useState([]);
   const navigation = useNavigation();
+  
   useEffect(() => {
     const fetchData = async () => {
       const userId = await AsyncStorage.getItem('userId');

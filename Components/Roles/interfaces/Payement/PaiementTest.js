@@ -15,3 +15,4 @@ const StripePay = ({ mt }) => {
 };
 
 export default StripePay;
+

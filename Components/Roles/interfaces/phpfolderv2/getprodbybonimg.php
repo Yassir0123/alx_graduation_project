@@ -15,6 +15,7 @@ try {
         $ids = reset($response);
         $id_commande = $ids['id_commande'];
 
+        
         // Prepare and execute the second query to get details from lignecommande and join with produit
         $sqll = $pdo->prepare('
             SELECT 

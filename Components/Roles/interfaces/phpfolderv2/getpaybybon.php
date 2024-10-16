@@ -9,6 +9,7 @@ try {
     $idligne = $data['id'];
     // Fetch product data with category names
     
+    
     $sql = $pdo->prepare('SELECT * from paiement where id_bonlivraison=?');
     $sql->execute([$idligne]);
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);

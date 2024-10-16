@@ -6,6 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 // ADD localhost address of your server
 const API_URL = "http://192.168.11.105:3000";
 
+
 const StripeApp = (props) => {
   const [email, setEmail] = useState();
   const [cardDetails, setCardDetails] = useState();

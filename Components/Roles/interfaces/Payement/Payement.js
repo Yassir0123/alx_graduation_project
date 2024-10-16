@@ -13,6 +13,7 @@ export default function App() {
   const [totalMontantPayer, setTotalMontantPayer] = useState(0); // Initialize totalMontantPayer as 0
   const [totalMontantTotale, setTotalMontantTotale] = useState(0); // Initialize totalMontantTotale as 0
 
+  
   useEffect(() => {
     const fetchData = async () => {
       const userId = await AsyncStorage.getItem('userId');

@@ -1,5 +1,6 @@
 <?php
 
+
  
 try {
     $pdo = new PDO("mysql:host=localhost;dbname=logicom;charset=utf8", 'root', '');

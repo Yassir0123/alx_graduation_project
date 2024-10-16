@@ -6,6 +6,7 @@ try {
     $email = $data['email'];
     $pass = $data['code'];
 
+    
     $emailParts = explode('@', $email);
     $domain = strtolower($emailParts[1]);
     if ($domain == "vendeur.com"|| $domain=="gmail.com") {

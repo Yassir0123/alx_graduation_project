@@ -64,6 +64,7 @@ try {
 
 
 
+
 /*header("Content-Type: application/json");//we need to translate the php data to json, to be accepted and read, aswell as intepreted by react, so we use this
 echo json_encode($tab);//we send the data to the react page in its json format, for the array, we'll switch it from a php array to react array*/
 

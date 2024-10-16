@@ -16,6 +16,7 @@ try {
         $dat = $data['date'];
 
       
+        
 
 
         $sql = $pdo->prepare('INSERT INTO commandesachat (id_commandeachat, id_achat, id_fournisseur,nom_entreprise,email,telephone,categorie,montant_totale, date_livraison) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');

@@ -4,6 +4,7 @@ try {
     $pdo = new PDO("mysql:host=localhost;dbname=logicom;charset=utf8", 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+    
     // Fetch data from the request
     $data = json_decode(file_get_contents("php://input"), true);
     $id = $data['idlignecommande'];

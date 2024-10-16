@@ -1,4 +1,5 @@
 <?php
+/*
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -12,6 +13,7 @@ $recipientEmail = $data->email;
 $passw=$data->passw;
 
 $mail = new PHPMailer(true);
+
 
 try {
     //Server settings
@@ -42,4 +44,4 @@ try {
 }
 
 echo json_encode($response);
-?>
+*/?>

@@ -14,6 +14,7 @@ import Pay7 from './Pay7';
 import OrderItemsScreen from './OrderItemsScreen';
 const Stack = createStackNavigator();
 
+
 const Payrout = () => {
   return (
     <Stack.Navigator initialRouteName="Pay1">

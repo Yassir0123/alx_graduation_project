@@ -19,6 +19,7 @@ $paymentIntent = $stripe->paymentIntents->create([
   ],
 ]);
 
+
 echo json_encode(
   [
     'paymentIntent' => $paymentIntent->client_secret,
