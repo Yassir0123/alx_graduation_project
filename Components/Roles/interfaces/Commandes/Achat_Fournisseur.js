@@ -64,7 +64,7 @@ const Ajout_Fournisseur = () => {
         console.log(requestData);
 
         const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addfournisseur.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/addfournisseur.php',
           requestData,
           {
             headers: {
@@ -74,11 +74,11 @@ const Ajout_Fournisseur = () => {
         );
 
         const responses = await axios.get(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getidsfournisseur.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getidsfournisseur.php',
         );
 
         const responser = await axios.get(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getnewidachat.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getnewidachat.php',
         );
 
         if (responses.data.userData && responses.data.userData.length > 0) {
@@ -91,6 +91,7 @@ const Ajout_Fournisseur = () => {
             telephone_contact: requestData.telephone,
             email_contact: requestData.email,
             action: responses.data.userData[0].action,
+            modify: 0,
           };
           console.log('lol',newFournisseurData);
           navigation.navigate('Fournisseur_existant');

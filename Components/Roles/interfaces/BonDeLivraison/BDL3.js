@@ -93,7 +93,7 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
 
   return (
     <Surface style={styles.productCard}>
-      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${images}` }} style={styles.productImage} />
+      <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${images}` }} style={styles.productImage} />
       <View style={styles.productDetails}>
         <Title style={styles.productName}>{libeller}</Title>
         <Paragraph style={styles.productPrice}>${prix}</Paragraph>
@@ -221,7 +221,7 @@ const CommandScreen = ({ route }) => {
         try {
           console.log('hey');
           const response = await axios.post(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
             {
               idcmdcount: selectedCommande[0].id_commande,
             },
@@ -230,7 +230,7 @@ const CommandScreen = ({ route }) => {
             }
           );
           const responsed = await axios.post(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
             {
               responseType: 'json',
             }
@@ -268,7 +268,7 @@ const CommandScreen = ({ route }) => {
   const handleCancel = async () => {
     try {
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php' ,
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php' ,
         {
           idcmdcount: selectedCommande[0].id_commande,
         },
@@ -305,7 +305,7 @@ const CommandScreen = ({ route }) => {
    console.log(selectedCommande[0].date_livraison);
    console.log(selectedLivreur[0].id_livreur);
   const response = await axios.post(
-     'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validatebon.php',
+     'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/validatebon.php',
      {
       id: selectedCommande[0].id_commande,
        nom:selectedCommande[0].nom_client,

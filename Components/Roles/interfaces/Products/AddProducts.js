@@ -6,7 +6,13 @@ import { useFocusEffect } from '@react-navigation/native';
 
 import * as ImagePicker from 'expo-image-picker';
 import {Picker} from '@react-native-picker/picker';
+import { LogBox } from 'react-native';
 
+// Ignore specific warnings
+LogBox.ignoreLogs([
+  'Key "cancelled" in the image picker result is deprecated',
+  // Add any other warnings you want to ignore here
+]);
 const AddProducts = ({ navigation }) => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
@@ -27,15 +33,15 @@ const AddProducts = ({ navigation }) => {
 
   const fetchData = async (retryCount = 0) => {
     try {
-      const response = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php');
+      const response = await axios.get('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php');
       setItems(response.data);
       setFilteredItems(response.data);
       const fournisseursResponse = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getfournisseurs.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getfournisseurs.php',
         { responseType: 'json' }
       );
       const categoriesResponse = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php',
         { responseType: 'json' }
       );
       setFournisseurs(fournisseursResponse.data);
@@ -88,7 +94,7 @@ const AddProducts = ({ navigation }) => {
     });
 
     try {
-      const response = await fetch('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
+      const response = await fetch('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
         method: 'POST',
         body: formData,
         headers: {
@@ -120,7 +126,7 @@ const AddProducts = ({ navigation }) => {
         imageUrl = await uploadImage(selectedImage);
       }
 
-      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addproduit.php', {
+      const response = await axios.post('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/addproduit.php', {
         ...newProduct,
         tva: newProduct.tva,
         image: imageUrl,
@@ -185,7 +191,7 @@ const AddProducts = ({ navigation }) => {
           ) : (
             filteredItems.map((item, index) => (
               <TouchableOpacity key={index} style={styles.itemCard} onPress={() => handleCardPress(item)}>
-                <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.itemImage} />
+                <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.itemImage} />
                 <Text style={styles.itemName}>{item.libeller}</Text>
                 <Text style={styles.itemPrice}>${item.prix_ht}</Text>
               </TouchableOpacity>

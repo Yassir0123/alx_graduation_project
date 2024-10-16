@@ -9,7 +9,7 @@ try {
     
     // Fetch product data with category names
     
-    $sql = $pdo->prepare('SELECT * from bonlivraison where id_operateur=?');
+    $sql = $pdo->prepare('SELECT * from bonlivraison where id_operateur=? ORDER BY id_bonlivraison DESC');
     $sql->execute([$idligne]);
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);
   if(count($response)>0){

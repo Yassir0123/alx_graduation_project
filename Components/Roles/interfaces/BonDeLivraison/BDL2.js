@@ -17,13 +17,13 @@ const BDL2 = () => {
   const [livreur, setLivreur] = useState([]);
 
   const [loading, setLoading] = useState(true);
-  const [selectedCommande, setSelectCommande] = useState(''); // Set the default value here
-  const [selectedLivreur, setSelectLivreur] = useState(''); // Set the default value here
+  const [selectedCommande, setSelectCommande] = useState('');
+  const [selectedLivreur, setSelectLivreur] = useState(''); 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreur.php');
-        const responses = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getidcmd2.php');
+        const response = await axios.get('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreur.php');
+        const responses = await axios.get('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getidcmd2.php');
         console.log(response.data.message);
         console.log(responses.data.message);
         setData(responses.data.userData);
@@ -45,25 +45,25 @@ const BDL2 = () => {
   console.log(selectedLivreurObj.id_livreur);
       // Make a GET request to the PHP endpoint with the selectedCommande ID
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcmdinfos.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcmdinfos.php',
         {
           id: selectedCommandeObj.id_commande, // Send only the ID value
         }
       );
       const responses = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreurbyid.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getlivreurbyid.php',
         {
           id: selectedLivreurObj.id_livreur, // Send only the ID value
         }
       );
       const responser = await axios.post(
-        'http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
         {
           idcmdcount: selectedCommandeObj.id_commande, // Send only the ID value
         }
       );
       const responsed = await axios.get(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/newbon.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/newbon.php',
       );
       // Check if the request was successful and the response contains data
        console.log('lol')

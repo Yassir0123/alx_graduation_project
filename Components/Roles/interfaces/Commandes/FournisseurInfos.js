@@ -92,7 +92,7 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
 
   return (
     <Surface style={styles.productCard}>
-      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${images}` }} style={styles.productImage} />
+      <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${images}` }} style={styles.productImage} />
       <View style={styles.productDetails}>
         <Title style={styles.productName}>{libeller}</Title>
         <Paragraph style={styles.productPrice}>${prix}</Paragraph>
@@ -218,7 +218,7 @@ const CommandScreen = ({ route }) => {
           try {
             //no need for response bc you're directly acting not expecting a response
             const response = await axios.post(
-              'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmdachat.php',
+              'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmdachat.php',
               {
                 idcmdcount: FournisseurData.idcmdcount,
               },
@@ -233,7 +233,7 @@ const CommandScreen = ({ route }) => {
         
         try {
           const response = await axios.post(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getligneachat.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getligneachat.php',
             {
               idcmdcount: FournisseurData.idcmdcount,
             },
@@ -274,7 +274,7 @@ const CommandScreen = ({ route }) => {
   const handleCancel = async () => {
     try {
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php',
         {
           idcmdcount: clientData.idcmdcount,
         },
@@ -313,7 +313,7 @@ console.log('lo', FournisseurData)
     if(FournisseurData.modify===0){
       console.log('firstcheck')
     const response = await axios.post(
-      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmdachat.php',
+      'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmdachat.php',
       {
        id: FournisseurData.id_fournisseur,
         nom:FournisseurData.nom_entreprise,
@@ -348,7 +348,7 @@ console.log('lo', FournisseurData)
     }
     }else{
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updatevalidateachat.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/updatevalidateachat.php',
         {
           idcmd:FournisseurData.idcmdcount,
           mt:totalAmount,

@@ -2,7 +2,7 @@ import axios from 'axios';
 export const deleteProduct = async (deletedata,quantiter,id_produit) => {
   console.log(deletedata);
   try {
-    const response = await axios.put( 'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deleteligne.php', {
+    const response = await axios.put( 'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deleteligne.php', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -20,7 +20,7 @@ export const deleteProduct = async (deletedata,quantiter,id_produit) => {
 
 export const updateProduct = async (editeddata) => {
   try {
-    const response = await axios.put( 'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updateligne.php', {
+    const response = await axios.put( 'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/updateligne.php', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -38,7 +38,7 @@ export const updateProduct = async (editeddata) => {
 export const AddProductToCommand = async (addedData) => {
   console.log(addedData);
   try {
-    const response = await axios.post( 'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addproduct.php', {
+    const response = await axios.post( 'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/addproduct.php', {
       headers: {
 
         'Content-Type': 'application/json'

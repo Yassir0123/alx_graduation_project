@@ -13,7 +13,7 @@ const App = () => {
       const fetchClientData = async () => {
         try {
           const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
             {
               responseType: 'json',
             }
@@ -52,7 +52,7 @@ const App = () => {
       {products.length > 0 ? (
         products.map((product, index) => (
           <View key={index} style={styles.transactionItem}>
-            <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${product.image}` }} style={styles.productImage} />
+            <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${product.image}` }} style={styles.productImage} />
             <View style={styles.transactionDetails}>
               <Text style={styles.transactionName}>{product.libeller}</Text>
               <Text style={styles.transactionPrice}>{product.quantiter_stock <= 0 ? 'Out of stock' : product.quantiter_stock+' Left' } </Text>

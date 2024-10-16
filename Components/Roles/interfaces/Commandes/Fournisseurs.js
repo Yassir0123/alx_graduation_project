@@ -24,7 +24,7 @@ const VosFournisseurs = () => {
 
         if (userId !== null && email !== null) {
           const response = await axios.get(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getfournisseurs.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getfournisseurs.php',
           );
           setData(response.data);
           setLoading(false);

@@ -7,6 +7,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const { width } = Dimensions.get('window');
 
 const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
@@ -14,11 +15,7 @@ const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 const BDL1 = () => {
   const navigation = useNavigation();
   const [data, setData] = useState([]);
-  const [datas, setDatas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [editingUser, setEditingUser] = useState(null);
-  const [roleUser, setRoleUser] = useState();
-  const [editedData, setEditedData] = useState({});
   const [searchQuery, setSearchQuery] = useState('');
   const [scrollY] = useState(new Animated.Value(0));
 
@@ -29,32 +26,40 @@ const BDL1 = () => {
   useFocusEffect(
     React.useCallback(() => {
       const fetchData = async () => {
-        const userId = await AsyncStorage.getItem('userId');
-        console.log(userId);
-        const clientData = {
-          id: userId,
-        };
+        try {
+          const userId = await AsyncStorage.getItem('userId');
+          console.log(userId);
+          const clientData = {
+            id: userId,
+          };
 
-        const response = await axios.post(
-          `http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getbons.php`,
-          JSON.stringify(clientData),
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        );
-        setData(response.data.userData);
-        console.log(response.data.message);
+          const response = await axios.post(
+            `http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getbons.php`,
+            JSON.stringify(clientData),
+            {
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }
+          );
+          setData(response.data.userData || []);
+          console.log(response.data.message);
+        } catch (error) {
+          console.log('Error fetching data:', error);
+          setData([]);
+        } finally {
+          setLoading(false);
+        }
       };
       fetchData();
     }, [])
   );
 
+
   const handlePress = async (user) => {
     try {
       responses = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
         {
           idcmdcount: user.id_commande,
         },
@@ -137,13 +142,13 @@ const BDL1 = () => {
     const { uri } = await Print.printToFileAsync({ html: pdfContent });
     await Sharing.shareAsync(uri);
   } catch (error) {
-    console.error('Error printing and sharing:', error);
+    console.log('Error printing and sharing:', error);
   }
   };
 
   const stats = [
-    { title: "Total Notes", value: data.length.toString(), icon: "document-text-outline", colors: ["#FF9FF3", "#FF6B6B"] },
-    { title: "Total Amounts", value: data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2), icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
+    { title: "Total Notes", value: data ? data.length.toString() : "0", icon: "document-text-outline", colors: ["#FF9FF3", "#FF6B6B"] },
+    { title: "Total Amounts", value: data ? data.reduce((total, item) => total + parseFloat(item.montant_totale || 0), 0).toFixed(2) : "0.00", icon: "cash-outline", colors: ["#54A0FF", "#5F27CD"] },
   ];
 
   const renderStatItem = ({ item }) => (
@@ -202,6 +207,14 @@ const BDL1 = () => {
     </>
   );
 
+  if (loading) {
+    return (
+      <View style={[styles.container, styles.centerContent]}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
@@ -218,11 +231,15 @@ const BDL1 = () => {
           { useNativeDriver: true }
         )}
         scrollEventThrottle={16}
+        ListEmptyComponent={() => (
+          <View style={styles.emptyContainer}>
+            <Text style={styles.emptyText}>No notes available</Text>
+          </View>
+        )}
       />
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -362,6 +379,20 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 14,
   },
+  centerContent: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  emptyText: {
+    fontSize: 18,
+    color: '#8E8E93',
+  }
 });
 
 export default BDL1;

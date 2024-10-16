@@ -37,7 +37,7 @@ const VosCommandes = () => {
 
         try {
           const response = await axios.post(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommandeachat.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommandeachat.php',
             {
               userId: userId,
             },
@@ -84,7 +84,7 @@ const VosCommandes = () => {
   const handleUsers = async (user) => {
     try {
       const responses = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getligneachat.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getligneachat.php',
         {
           idcmdcount: user.id_commandeachat,
         },
@@ -191,7 +191,7 @@ const VosCommandes = () => {
       <Text style={styles.commandeDate}>{item.date_livraison}</Text>
       <View style={styles.commandeDetails}>
         <Text style={styles.detailText}>ID: {item.id_commandeachat} • Supplier: {item.id_fournisseur}</Text>
-        <Text style={styles.commandeAmount}>{item.montant_totale} MAD</Text>
+        <Text style={styles.commandeAmount}>{item.montant_totale.toFixed(2)} MAD</Text>
       </View>
       <TouchableOpacity style={styles.viewButton} onPress={() => handleUsers(item)}>
         <Text style={styles.viewButtonText}>Generate PDF</Text>

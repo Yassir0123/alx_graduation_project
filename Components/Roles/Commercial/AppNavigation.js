@@ -25,6 +25,7 @@ const AppNavigator = () => {
           } else if (route.name === 'Order') {
             iconName = focused ? 'clipboard' : 'clipboard-outline';
           }
+
           return <Ionicons name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: 'blue',

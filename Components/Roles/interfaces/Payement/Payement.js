@@ -22,7 +22,7 @@ export default function App() {
 
       try {
         const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getpay.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getpay.php',
           clientData,
           {
             headers: {

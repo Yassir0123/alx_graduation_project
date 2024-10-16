@@ -22,7 +22,7 @@ const VosClients = () => {
           console.log('Email:', email);
 
           const response = await axios.post(
-           'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getclient.php',
+           'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getclient.php',
             {
               userId: userId,
               email: email,
@@ -80,7 +80,6 @@ const VosClients = () => {
   );
 
   const handleUserPress = (user) => {
-    // Handle user press (e.g., navigate to a user details screen)
     console.log('User pressed:', user);
   };
 

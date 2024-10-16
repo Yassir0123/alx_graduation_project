@@ -69,7 +69,7 @@ const Vendeur_Client = () => {
         };
 
         const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addclient.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/addclient.php',
           JSON.stringify(requestData),
           {
             headers: {
@@ -78,11 +78,10 @@ const Vendeur_Client = () => {
           }
         );
 
-        const userDataWithAction = { ...response.data.userData[0], action: 0 };
+        const userDataWithAction = { ...response.data.userData[0], action: 0,modify: 0 };
 
         console.log(userDataWithAction);
         setData(userDataWithAction);
-
         navigation.navigate('Commanded', { clientData: userDataWithAction });
       } else {
         console.log('User data not found.');

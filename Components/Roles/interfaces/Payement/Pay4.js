@@ -38,11 +38,11 @@ const App = () => {
       setFullName(fullName);
       try {
         const response = await axios.post(
-      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getpay.php',
+      'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getpay.php',
           { id: userId },
           { responseType: 'json' }
         );
-        setCustomers(response.data.userData); // Use response.data.userData
+        setCustomers(response.data.userData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -57,12 +57,12 @@ const App = () => {
   );
 
   const handleCardPress = async (item) => {
-    // Handle the press event here
+    // We Handle the press event here
     console.log('Pressed customer:', item);
     setLoading(true);
     try {
       const response = await axios.post(
-    'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getprodbybon.php',
+    'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getprodbybon.php',
         { idbon: item.id_bonlivraison },
         { responseType: 'json' }
       );

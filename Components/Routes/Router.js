@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../Login/Login/Home';
 import Login from '../Login/Login/Login';
 import RoleNavigation from '../Roles/RoleNavigator';
-import Commercial_Vendeur from '../Roles/interfaces/Commandes/BonDeCommande2';
 const Stack = createStackNavigator();
 
 const Router = () => {
@@ -27,11 +26,7 @@ const Router = () => {
           component={RoleNavigation}
           options={{ headerShown: false }}
         />
-       < Stack.Screen
-          name="Ajouter_un_Vendeur"
-          component={Commercial_Vendeur}
-          options={{ headerShown: false }}
-        />
+
 
       </Stack.Navigator>
     </NavigationContainer>

@@ -5,6 +5,7 @@ import Operateur from './operateur/AppNavigation';
 import Receptionist from './Receptionist/AppNavigation'; 
 import Achat from './Achat/AppNavigation'; 
 import Livreur from './Livreur/AppNavigation'; 
+
 const Stack = createStackNavigator();
 
 const componentMapping = {
@@ -12,7 +13,7 @@ const componentMapping = {
     'operateur.com':Operateur,
     'receptionist.com':Receptionist,
     'achat.com':Achat,
-    'livreur.com':Livreur,
+    'livreur.com':Livreur
 };
 
 const RoleNavigation = ({route}) => { 

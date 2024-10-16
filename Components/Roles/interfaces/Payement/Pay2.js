@@ -24,7 +24,7 @@ const Pay2 = () => {
         const userId = await AsyncStorage.getItem('userId');
 
         const response = await axios.post(
-       'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonbyidliv.php',
+       'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonbyidliv.php',
           {
             id: userId,
           },

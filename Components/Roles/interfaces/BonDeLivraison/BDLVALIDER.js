@@ -13,7 +13,7 @@ const BDLVALIDER = () => {
 
       try {
         const response = await axios.get(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonvalider.php'
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonvalider.php'
         );
         if (response.data.message === 'got data') {
           setData(response.data.userData);

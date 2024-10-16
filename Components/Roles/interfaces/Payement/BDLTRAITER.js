@@ -11,7 +11,7 @@ const Atraiter = () => {
       const userId = await AsyncStorage.getItem('userId');
       try {
         const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonbyidliv.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getbonbyidliv.php',
           {
           
          id : userId,
@@ -29,7 +29,6 @@ const Atraiter = () => {
     fetchData();
   }, [data]);
   const handleVisualize = (item) => {
-    // Create a new variable and add the desired columns
     const clientData = {
       idcmdcount: item.id_commande,
       nom: item.nom_client,
@@ -39,19 +38,14 @@ const Atraiter = () => {
       id_client: item.id_client,
      action:0,
     };
-    // Now you have the modified item with the additional columns
     navigation.navigate('Ajouter_un_Produits', { clientData });
-  
-    // You can also store this modified item in a state variable if needed
-    // For example, if you want to keep track of it for further use:
-    // setModifiedItem(modifiedItem);
   };
   
 
   const handleDelete = async(id) => {
     // Remove the item with the given ID from the data
     const response = await axios.post(
-      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletebon.php',
+      'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletebon.php',
       {
         id:id
       },
@@ -108,15 +102,7 @@ const Atraiter = () => {
               <Text style={styles.label}>Delivery Date:</Text>
               <Text style={styles.value}>{item.date_livraison}</Text>
             </View>
-            <View style={styles.buttonContainer}>
-     
-              <TouchableOpacity
-                style={styles.deleteButton}
-                onPress={() => handleDelete(item.id_bonlivraison)}
-              >
-                <Text style={styles.buttonText}>Delete</Text>
-              </TouchableOpacity>
-            </View>
+
           </View>
         ))
       ) : (

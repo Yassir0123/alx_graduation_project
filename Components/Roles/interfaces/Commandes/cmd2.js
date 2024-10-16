@@ -6,7 +6,7 @@ import axios from 'axios';
 const Item = ({ id, name, price, quantity, img, tva, onAddButtonPress }) => (
   <View style={styles.productCard}>
     <View style={styles.imageContainer}>
-      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${img}` }} style={styles.productImage} />
+      <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${img}` }} style={styles.productImage} />
       {quantity > 0 && quantity < 10 && (
         <View style={styles.almostDoneBar}>
           <Text style={styles.almostDoneText}>Almost done</Text>
@@ -64,15 +64,15 @@ export default function App() {
     const fetchClientData = async () => {
       try {
         const produitsResponse = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getallproducts.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getallproducts.php',
           { responseType: 'json' }
         );
         const subcategoriesResponse = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php',
           { responseType: 'json' }
         );
         const maincategoriesResponse = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesgrand.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesgrand.php',
           { responseType: 'json' }
         );
         console.log(produitsResponse.data);

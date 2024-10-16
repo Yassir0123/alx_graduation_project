@@ -31,7 +31,7 @@ const ProductDetail = ({ route }) => {
         </View>
         <View style={styles.imageContainer}>
           <Image
-            source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${productinfos.image}` }}
+            source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${productinfos.image}` }}
             style={styles.image}
           />
         </View>

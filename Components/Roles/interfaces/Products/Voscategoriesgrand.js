@@ -20,7 +20,7 @@ const Voscategoriesgrand = ({ navigation }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesgrand.php');
+      const response = await axios.get('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesgrand.php');
       setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -34,7 +34,7 @@ const Voscategoriesgrand = ({ navigation }) => {
   const renderCategoryCard = ({ item }) => (
     <TouchableOpacity onPress={() => handleCardPress(item)} style={styles.categoryCard}>
       <View>
-        <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
+        <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
         <Text style={styles.categoryName}>{item.nom_categorie}</Text>
       </View>
     </TouchableOpacity>

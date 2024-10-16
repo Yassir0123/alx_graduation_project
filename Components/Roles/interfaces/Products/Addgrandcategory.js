@@ -3,6 +3,13 @@ import { SafeAreaView, View, Text, Image, StyleSheet, TouchableOpacity, TextInpu
 import { AntDesign } from '@expo/vector-icons';
 import axios from 'axios';
 import * as ImagePicker from 'expo-image-picker';
+import { LogBox } from 'react-native';
+
+// Ignore specific warnings
+LogBox.ignoreLogs([
+  'Key "cancelled" in the image picker result is deprecated',
+  // Add any other warnings you want to ignore here
+]);
 const AddgrandCategory = ({ navigation }) => {
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
@@ -20,7 +27,7 @@ const AddgrandCategory = ({ navigation }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesgrand.php');
+      const response = await axios.get('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategoriesgrand.php');
       setData(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -57,7 +64,7 @@ const AddgrandCategory = ({ navigation }) => {
     });
   
     try {
-      const responseImage = await fetch('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
+      const responseImage = await fetch('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
         method: 'POST',
         body: formData,
         headers: {
@@ -89,7 +96,7 @@ const AddgrandCategory = ({ navigation }) => {
       setIsLoading(true);
       try {
         const imageUrl = await uploadImage(selectedImage);
-        const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addcategoriegrand.php', {
+        const response = await axios.post('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/addcategoriegrand.php', {
           nomcat: addData,
           image: imageUrl,
         });
@@ -133,7 +140,7 @@ const AddgrandCategory = ({ navigation }) => {
         if (selectedImage) {
           imageUrl = await uploadImage(selectedImage);
         }
-        const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updatecategoriegrand.php', {
+        const response = await axios.post('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/updatecategoriegrand.php', {
           id: selectedItem,
           nomcat: editData,
           image: imageUrl,
@@ -163,7 +170,7 @@ const AddgrandCategory = ({ navigation }) => {
 
   const handleDeleteCategory = async (category) => {
     try {
-      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecategoriegrand.php', {
+      const response = await axios.post('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecategoriegrand.php', {
         id: category.id_grandcategorie,
       });
       fetchData();
@@ -174,7 +181,7 @@ const AddgrandCategory = ({ navigation }) => {
 
   const renderCategoryCard = ({ item }) => (
     <TouchableOpacity onPress={() => handleCardPress(item)} style={styles.categoryCard}>
-      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
+      <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${item.image}` }} style={styles.categoryImage} />
       <Text style={styles.categoryName}>{item.nom_categorie}</Text>
       <TouchableOpacity style={styles.editButton} onPress={() => handleEditCategory(item)}>
         <Text style={styles.buttonText}>Edit</Text>

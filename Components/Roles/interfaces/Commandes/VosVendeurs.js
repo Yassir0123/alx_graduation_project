@@ -26,7 +26,7 @@ const VosVendeurs = () => {
           console.log('Email:', email);
 
           const response = await axios.post(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getvendeur.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getvendeur.php',
             {
               userId: userId,
             },
@@ -74,7 +74,6 @@ const VosVendeurs = () => {
   );
 
   const handleVendeurPress = (vendeur) => {
-    // Handle vendeur press (e.g., navigate to a vendeur details screen)
     console.log('Vendeur pressed:', vendeur);
   };
 

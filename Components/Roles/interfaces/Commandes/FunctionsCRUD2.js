@@ -2,7 +2,7 @@ import axios from 'axios';
 export const deleteProduct = async (deletedata) => {
   console.log(deletedata);
   try {
-    const response = await axios.put('http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/deleteligneachat.php', {
+    const response = await axios.put('http://192.168.125.68/logo/Components/Roles/interfaces/phpfolderv2/deleteligneachat.php', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -17,7 +17,7 @@ export const deleteProduct = async (deletedata) => {
 
 export const updateProduct = async (editeddata) => {
   try {
-    const response = await axios.put('http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/updateligneachat.php', {
+    const response = await axios.put('http://192.168.125.68/logo/Components/Roles/interfaces/phpfolderv2/updateligneachat.php', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -35,7 +35,7 @@ export const updateProduct = async (editeddata) => {
 export const AddProductToCommand = async (addedData) => {
   console.log(addedData);
   try {
-    const response = await axios.post('http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/addligneachat.php', {
+    const response = await axios.post('http://192.168.125.68/logo/Components/Roles/interfaces/phpfolderv2/addligneachat.php', {
       headers: {
 
         'Content-Type': 'application/json'

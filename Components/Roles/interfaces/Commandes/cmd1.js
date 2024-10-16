@@ -93,7 +93,7 @@ const ProductCard = ({ product, onEdit, onDelete }) => {
 
   return (
     <Surface style={styles.productCard}>
-      <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${images}` }} style={styles.productImage} />
+      <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${images}` }} style={styles.productImage} />
       <View style={styles.productDetails}>
         <Title style={styles.productName}>{libeller}</Title>
         <Paragraph style={styles.productPrice}>${prix}</Paragraph>
@@ -225,7 +225,7 @@ const CommandScreen = ({ route }) => {
           try {
             //no need for response bc you're directly acting not expecting a response
             const response = await axios.post(
-            'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php',
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php',
               {
                 idcmdcount: clientData.idcmdcount,
               },
@@ -240,7 +240,7 @@ const CommandScreen = ({ route }) => {
         
         try {
           const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getlignecommande.php',
             {
               idcmdcount: clientData.idcmdcount,
             },
@@ -249,7 +249,7 @@ const CommandScreen = ({ route }) => {
             }
           );
           const responsed = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getproductpage.php',
             {
               responseType: 'json',
             }
@@ -287,7 +287,7 @@ const CommandScreen = ({ route }) => {
   const handleCancel = async () => {
     try {
       const response = await axios.post(
-      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php',
+      'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deletecmd.php',
         {
           idcmdcount: clientData.idcmdcount,
         },
@@ -319,7 +319,7 @@ const CommandScreen = ({ route }) => {
       console.log(totalAmount);
       console.log(email); 
       const response = await axios.post(
-      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmd.php',
+      'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/validatecmd.php',
         {
           id: clientData.id_client,
           nom: clientData.nom,
@@ -343,7 +343,7 @@ const CommandScreen = ({ route }) => {
     }
     else{ 
       const response = await axios.post(
-      'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updatevalidatecmd.php',
+      'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/updatevalidatecmd.php',
         {
           idcmd: clientData.idcmdcount,
           mt: totalAmount,

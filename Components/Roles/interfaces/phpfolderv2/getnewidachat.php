@@ -9,7 +9,6 @@ try {
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);
     $idc=reset($response);
     $id=reset($idc);
-    // Add the "action" key with a value of 0 to each row
 
     // Encode and send the response
     echo json_encode($id+1);

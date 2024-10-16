@@ -29,7 +29,7 @@ const FournisseurCommande = () => {
 
     try {
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommandtoday.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcommandtoday.php',
         {
           userId: userId,
         },
@@ -83,7 +83,7 @@ const FournisseurCommande = () => {
     setValidating(true);
     try {
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/validerreception.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/validerreception.php',
         {
           userid: selectedOrder.id_commandeachat,
         },
@@ -106,7 +106,7 @@ const FournisseurCommande = () => {
   const handleUsers = async (user) => {
     try {
       const responses = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getligneachat.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getligneachat.php',
         {
           idcmdcount: user.id_commandeachat,
         },
@@ -197,7 +197,7 @@ const FournisseurCommande = () => {
       <Text style={styles.orderDate}>{item.date_livraison}</Text>
       <View style={styles.orderDetails}>
         <Text style={styles.detailText}>ID: {item.id_commandeachat} • Supplier: {item.id_fournisseur}</Text>
-        <Text style={styles.orderAmount}>{item.montant_totale} MAD</Text>
+        <Text style={styles.orderAmount}>{item.montant_totale.toFixed(2)} MAD</Text>
       </View>
       <View style={styles.actionButtons}>
         {roleUser !== 'vendeur.com' && (

@@ -37,7 +37,7 @@ const Fournisseur3 = () => {
             console.log('Email:', email);
 
             const response = await axios.post(
-              'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getidsfournisseur.php',
+              'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getidsfournisseur.php',
               {
                 userId: userId,
                 email: email,
@@ -93,7 +93,7 @@ const Fournisseur3 = () => {
         <Ionicons name="search" size={20} color="#8e8e93" />
         <TextInput 
           style={styles.searchInput}
-          placeholder="Rechercher un fournisseur"
+          placeholder="Research a supplier"
           placeholderTextColor="#8e8e93"
           onChangeText={(text) => setSearchQuery(text)}
           value={searchQuery}

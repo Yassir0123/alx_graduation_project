@@ -74,7 +74,7 @@ const OrderItemsScreen = ({route}) => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getclientbyid.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getclientbyid.php',
           { id: Bonlivraison.id_client },
           { responseType: 'json' }
         );
@@ -121,7 +121,7 @@ const OrderItemsScreen = ({route}) => {
             <Card style={styles.card}>
               <Card.Content>
                 <View style={styles.imageContainer}>
-                <Image source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${products[0].image}` }}
+                <Image source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${products[0].image}` }}
                     style={styles.productImage}
                   />
                 </View>

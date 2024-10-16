@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import { useFocusEffect } from '@react-navigation/native';
+
 const App = ({navigation}) => {
   const [transactions, setTransactions] = useState([]);
   const [totalMontantTotale, setTotalMontantTotale] = useState(0);
@@ -13,48 +14,50 @@ const App = ({navigation}) => {
   const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(true);
 
- 
   useFocusEffect(
     React.useCallback(() => {
-    const fetchData = async () => {
-      const userId = await AsyncStorage.getItem('userId');
-      const fullName = await AsyncStorage.getItem('fullname');
-      setFullName(fullName);
-      console.log('name:',fullName);
+      const fetchData = async () => {
+        const userId = await AsyncStorage.getItem('userId');
+        const fullName = await AsyncStorage.getItem('fullname');
+        setFullName(fullName);
+        console.log('name:', fullName);
 
-      try {
-        const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getpaiementpage.php',
-          { id: userId },
-          { responseType: 'json' }
-        );
-        console.log(response.data);
-        console.log('Response data:', response.data);
+        try {
+          const response = await axios.post(
+            'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getpaiementpage.php',
+            { id: userId },
+            { responseType: 'json' }
+          );
+          console.log('Response data:', response.data);
 
-        if (response.data.message === 'gotdata') {
-          setTransactions(response.data.data.userData || []);
-          setTotalMontantTotale(response.data.data.montant_totale || 0);
-          setRecentPayments(response.data.data.topFive || []);
-        } else {
-          //console.error('No data found.');
+          if (response.data.message === 'gotdata') {
+            setTransactions(response.data.data.userData || []);
+            setTotalMontantTotale(response.data.data.montant_totale || 0);
+            setRecentPayments(response.data.data.topFive || []);
+          } else {
+            setTransactions([]);
+            setRecentPayments([]);
+            setTotalMontantTotale(0);
+          }
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          setTransactions([]);
+          setRecentPayments([]);
+          setTotalMontantTotale(0);
+        } finally {
+          setLoading(false);
         }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+      };
 
-    fetchData();
-  }, [])
-);
-
+      fetchData();
+    }, [])
+  );
   const handleTransactionPress = async (item) => {
     console.log(item);
     setLoading(true);
     try {
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getprodbybon.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getprodbybon.php',
         { idbon: item.id_bonlivraison },
         { responseType: 'json' }
       );
@@ -137,7 +140,7 @@ const App = ({navigation}) => {
       const { uri } = await Print.printToFileAsync({ html: pdfContent });
       await Sharing.shareAsync(uri);
     } catch (error) {
-      console.error('Error printing and sharing:', error);
+      console.log('Error printing and sharing:', error);
     }
   };
   const handleButtonPress = () => {
@@ -159,16 +162,17 @@ const App = ({navigation}) => {
       <View style={styles.billContainer}>
         <Text style={styles.totalBillText}>Total Due Bill</Text>
         <Text style={styles.billAmount}>${totalMontantTotale.toFixed(2)}</Text>
-        <Text style={styles.monthText}>July</Text>
-  
       </View>
+
       <View style={styles.recentPaymentContainer}>
-        <Text style={styles.recentPaymentTitle}>Recent Payment</Text>
-        <TouchableOpacity style={styles.addButton}  onPress={() => handleButtonPress()}>
-          <Ionicons name="add" size={20} color="#fff" />
+        <Text style={styles.recentPaymentTitle}>Recent Payments</Text>
+        <TouchableOpacity onPress={() => handlePress()}>
+          <Text style={styles.seeAllText}>See All</Text>
         </TouchableOpacity>
+
       </View>
-      <View horizontal style={styles.avatarContainer}>
+
+      <ScrollView horizontal style={styles.avatarContainer}>
         {recentPayments.length > 0 ? (
           recentPayments.map((payment, index) => (
             <TouchableOpacity key={index} style={styles.avatarItem} onPress={() => handleTransactionPress(payment)}>
@@ -181,14 +185,14 @@ const App = ({navigation}) => {
             </TouchableOpacity>
           ))
         ) : (
-          <Text>No recent payments found.</Text>
+          <Text style={styles.noDataText}>No recent payments found.</Text>
         )}
-      </View>
+      </ScrollView>
 
       <View style={styles.transactionHeader}>
         <Text style={styles.transactionTitle}>Transactions</Text>
-        <TouchableOpacity onPress={() => handlePress()}>
-          <Text style={styles.seeAllText}>See All</Text>
+        <TouchableOpacity style={styles.addButton} onPress={handleButtonPress}>
+          <Ionicons name="add" size={24} color="#fff" />
         </TouchableOpacity>
       </View>
 
@@ -204,12 +208,13 @@ const App = ({navigation}) => {
           </TouchableOpacity>
         ))
       ) : (
-        <Text>No transactions found.</Text>
+        <View style={styles.noTransactionsContainer}>
+          <Text style={styles.noDataText}>No transactions found.</Text>
+        </View>
       )}
     </ScrollView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -339,6 +344,28 @@ const styles = StyleSheet.create({
     marginTop: 5,
     fontSize: 12,
     color: '#999',
+  },
+  noDataText: {
+    fontSize: 16,
+    color: '#999',
+    textAlign: 'center',
+    marginVertical: 20,
+  },
+  noTransactionsContainer: {
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  addTransactionButton: {
+    backgroundColor: '#5a67d8',
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+  },
+  addTransactionText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

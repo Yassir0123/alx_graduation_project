@@ -11,9 +11,9 @@ try {
     $domain = strtolower($emailParts[1]);
 
     if ($domain == "vendeur.com") {
-        $sql = $pdo->prepare('SELECT * FROM commande WHERE id_vendeur=?');
+        $sql = $pdo->prepare('SELECT * FROM commande WHERE id_vendeur=? ORDER  BY id_vendeur DESC');
     } else{
-        $sql = $pdo->prepare('SELECT * FROM commande   WHERE id_commerciale=?');
+        $sql = $pdo->prepare('SELECT * FROM commande   WHERE id_commerciale=? ORDER BY id_commande DESC');
     }
     $sql->execute([$id]);
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);

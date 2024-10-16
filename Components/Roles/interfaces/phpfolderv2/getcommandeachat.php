@@ -7,7 +7,7 @@ try {
     $data = json_decode(file_get_contents("php://input"), true);
 
     $id = $data['userId'];
-    $sql = $pdo->prepare('SELECT * FROM commandesachat   WHERE id_achat=?');
+    $sql = $pdo->prepare('SELECT * FROM commandesachat   WHERE id_achat=? ORDER BY id_commandeachat DESC');
 
     $sql->execute([$id]);
     $response = $sql->fetchAll(PDO::FETCH_ASSOC);

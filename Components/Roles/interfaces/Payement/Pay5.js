@@ -19,7 +19,7 @@ const DeliveryOptions = () => {
   useEffect(() => {
     if (Bonlivraison) {
       axios.post(
- 'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getprodbybonimg.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getprodbybonimg.php',
         { idbon: Bonlivraison.id_bonlivraison },
         { responseType: 'json' }
       ).then(response => {
@@ -32,14 +32,13 @@ const DeliveryOptions = () => {
           price: item.prix,
           quantity: item.quantiter,
           tva: item.tva,
-          total: item.prix * item.quantiter, // Price without TVA
-          image: item.image // Assuming there is an image attribute
+          total: item.prix * item.quantiter,
+          image: item.image
         }));
 
-        // Calculate total quantity, total price, and total TVA
         const totalQuantity = fetchedProducts.reduce((acc, product) => acc + product.quantity, 0);
         const totalPrice = fetchedProducts.reduce((acc, product) => acc + product.total, 0);
-        const totalTVA = fetchedProducts.reduce((acc, product) => acc + product.tva, 0); // Total TVA
+        const totalTVA = fetchedProducts.reduce((acc, product) => acc + product.tva, 0);
 
         setProducts(fetchedProducts);
         setTotalQuantity(totalQuantity);
@@ -56,6 +55,7 @@ const DeliveryOptions = () => {
   const handlePassOrder = () => {
     navigation.navigate('Pay6', { products, Bonlivraison, totalPrice, totalTVA });
   };
+  
   const deliveryOptions = [
     { id: 'home', icon: 'home', label: 'Home Delivery', detail: 'Your order will be delivered to your doorstep.' },
     { id: 'subway', icon: 'subway', label: 'Subway Pickup', detail: 'Pick up your order at the nearest subway station.' },
@@ -75,7 +75,7 @@ const DeliveryOptions = () => {
           <View style={styles.optionsContainer}>
             {deliveryOptions.map((option) => (
               <TouchableOpacity
-                key={option.id}
+                key={`delivery-option-${option.id}`}
                 style={[
                   styles.optionCard,
                   selectedOption === option.id && styles.selectedOptionCard,
@@ -104,9 +104,9 @@ const DeliveryOptions = () => {
 
         <Text style={styles.sectionTitle}>Your Products</Text>
         {products.map((product) => (
-          <TouchableOpacity key={product.id} style={styles.productContainer} onPress={() => navigation.navigate('OrderItemsScreen', { products: [product], Bonlivraison })}>
+          <TouchableOpacity key={`product-${product.id}`} style={styles.productContainer} onPress={() => navigation.navigate('OrderItemsScreen', { products: [product], Bonlivraison })}>
             <View style={styles.productCard}>
-              <Image source={{ uri:`http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${product.image}` }} style={styles.productImage} />
+              <Image source={{ uri:`http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${product.image}` }} style={styles.productImage} />
               <View style={styles.productDetails}>
                 <Text style={styles.productName}>{product.name}</Text>
                 <Text style={styles.productCategory}>{product.category}</Text>
@@ -127,7 +127,6 @@ const DeliveryOptions = () => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

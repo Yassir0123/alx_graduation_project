@@ -63,7 +63,7 @@ const Ajout_Fournisseur2 = () => {
         };
         console.log(requestData);
         const response = await axios.post(
-    `${URL}/logo/Components/Roles/interfaces/phpfolderv2/addfournisseur.php`,
+    'http://192.168.125.68/logo/Components/Roles/interfaces/phpfolderv2/addfournisseur.php',
           requestData,
           {
             headers: {
@@ -72,10 +72,10 @@ const Ajout_Fournisseur2 = () => {
           }
         );
         const responses= await axios.get(
-    'http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/getidsfournisseur.php',
+    'http://192.168.125.68/logo/Components/Roles/interfaces/phpfolderv2/getidsfournisseur.php',
         );
         const responser= await axios.get(
-    'http://192.168.11.105/logo/Components/Roles/interfaces/phpfolderv2/getnewidachat.php',
+    'http://192.168.125.68/logo/Components/Roles/interfaces/phpfolderv2/getnewidachat.php',
         );
         setData(responses.data.userData);
         console.log(data);

@@ -24,7 +24,13 @@ import { Ionicons, FontAwesome, AntDesign, Feather } from '@expo/vector-icons';
 import axios from 'axios';
 import * as ImagePicker from 'expo-image-picker';
 import { useNavigation } from '@react-navigation/native';
+import { LogBox } from 'react-native';
 
+// Ignore specific warnings
+LogBox.ignoreLogs([
+  'Key "cancelled" in the image picker result is deprecated',
+  // Add any other warnings you want to ignore here
+]);
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -88,11 +94,11 @@ const OrderItemsScreen = ({route}) => {
     const fetchData = async () => {
       try {
         const fournisseursResponse = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getfournisseurs.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getfournisseurs.php',
           { responseType: 'json' }
         );
         const categoriesResponse = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getcategories.php',
           { responseType: 'json' }
         );
         setFournisseurs(fournisseursResponse.data);
@@ -170,7 +176,7 @@ const OrderItemsScreen = ({route}) => {
           name: uniqueFilename,
         });
   
-        const imageResponse = await fetch('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
+        const imageResponse = await fetch('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/uploadimage.php', {
           method: 'POST',
           body: formData,
           headers: {
@@ -192,7 +198,7 @@ const OrderItemsScreen = ({route}) => {
       }
 
       console.log('edit : ', editedProduct)
-      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/updateproduit.php', {
+      const response = await axios.post('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/updateproduit.php', {
         id_produit: editedProduct.id_produit,
         quantiter_stock: editedProduct.quantiter_stock,
         tva: editedProduct.tva / 100,
@@ -222,7 +228,7 @@ const OrderItemsScreen = ({route}) => {
   const handleDelete = async () => {
     try {
       setLoading(true);
-      const response = await axios.post('http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/deleteproduct.php', {
+      const response = await axios.post('http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/deleteproduct.php', {
         id_produit: products.id_produit,
       });
       navigation.navigate('gotoaddproduct');
@@ -339,7 +345,7 @@ const OrderItemsScreen = ({route}) => {
           </Button>
           {(editedProduct.newImage || editedProduct.image) && (
             <Image 
-              source={{ uri: editedProduct.newImage || `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${editedProduct.image}` }} 
+              source={{ uri: editedProduct.newImage || `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${editedProduct.image}` }} 
               style={styles.selectedImage} 
             />
           )}
@@ -365,7 +371,7 @@ const OrderItemsScreen = ({route}) => {
                 <Card.Content>
                   <View style={styles.imageContainer}>
                     <Image 
-                      source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${products.image}` }}
+                      source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${products.image}` }}
                       style={styles.productImage}
                     />
                   </View>

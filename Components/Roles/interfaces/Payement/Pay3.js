@@ -3,27 +3,25 @@ import { StyleSheet, View, Text, TextInput,Modal,TouchableOpacity} from 'react-n
 import { RadioButton } from 'react-native-paper';
 import StripePay from './PaiementTest';
 const Pay3 = ({route}) => {
-  const [checked, setChecked] = useState('first'); // Initialize the selected value
+  const [checked, setChecked] = useState('first');
   const [numeriqueInputVisible, setNumeriqueInputVisible] = useState(false);
   const [numeriqueValue, setNumeriqueValue] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
   const { Bonlivraison } = route.params;
   const [montantTotale, setMontantTotale] = useState(Bonlivraison.montant_totale);
   const handlevalidate= ()=>{
-//YOUR LOGIC TO VALIDATE
-
   }
   const handleRadioChange = (newValue) => {
     setChecked(newValue);
   
-    // Show the text input below the first two options
+    // we Show the text input below the first two options
     if (newValue === 'first' || newValue === 'second') {
       setNumeriqueInputVisible(true);
     } else {
       setNumeriqueInputVisible(false);
     }
   
-    // Check if the "Carte Visa" option is selected and show the modal
+    //  we Check if the "Carte Visa" option is selected and show the modal
     if (newValue === 'third') {
       setModalVisible(true);
     } else {

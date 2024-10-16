@@ -19,7 +19,7 @@ const App = ({ route }) => {
       try {
         
         const response = await axios.post(
-         'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getpaybybon.php',
+         'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getpaybybon.php',
           { id: route.params.id_bonlivraison},
           { responseType: 'json' }
         );

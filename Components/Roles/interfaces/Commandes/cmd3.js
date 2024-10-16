@@ -68,7 +68,7 @@ const PlaceCommand = ({ route }) => {
     <ScrollView style={styles.container}>
       <View style={styles.card}>
         <Image
-          source={{ uri: `http://192.168.11.105/alx/alx/Components/Roles/interfaces/Products/${product.img}` }} // Replace with the actual image URL
+          source={{ uri: `http://192.168.125.68/alx/alx/Components/Roles/interfaces/Products/${product.img}` }} // Replace with the actual image URL
           style={styles.image}
         />
         <Text style={styles.title}>{product.name} - Each</Text>

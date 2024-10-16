@@ -98,18 +98,23 @@ const CheckoutScreen = ({ route }) => {
     const fetchClientData = async () => {
       try {
         const response = await axios.post(
-          'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/getclientbyid.php',
+          'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/getclientbyid.php',
           { id: Bonlivraison.id_client },
           { responseType: 'json' }
         );
-        setClientDetails(response.data.userData[0]);
+        if (response.data && response.data.userData && response.data.userData[0]) {
+          setClientDetails(response.data.userData[0]);
+        } else {
+          console.error('Invalid response structure:', response.data);
+          // Set a default state or show an error message to the user
+        }
         setLoading(false);
       } catch (error) {
         console.error('Error fetching client data:', error);
+        // Set a default state or show an error message to the user
         setLoading(false);
       }
     };
-
     fetchClientData();
   }, [Bonlivraison.id_client]);
 
@@ -155,24 +160,27 @@ const CheckoutScreen = ({ route }) => {
   console.log(paymentData);
       // Send data to the server
       const response = await axios.post(
-        'http://192.168.11.105/alx/alx/Components/Roles/interfaces/phpfolderv2/addpays.php',
+        'http://192.168.125.68/alx/alx/Components/Roles/interfaces/phpfolderv2/addpays.php',
         { paymentData, bonvaliderData },
         { responseType: 'json' }
       );
-      // Handle response
-      console.log('response: ',response.data);
+    
       if (response.data.message === 'gotdata') {
         navigation.navigate('Pay7', {
           id_bonlivraison: Bonlivraison.id_bonlivraison,
           totalTVA: totalTVA,
-          totalTax: tax, 
-          // Pass total tax if needed
+          totalTax: tax,
         });
       } else {
-        console.log('Error:', response.data.message);
+        console.error('Unexpected response:', response.data);
+        // Show an error message to the user
       }
     } catch (error) {
-      console.error('error:', error);
+      console.error('Error in payment process:', error);
+      if (error.response) {
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+      }
     }
   };
   
@@ -224,11 +232,11 @@ const CheckoutScreen = ({ route }) => {
               <RadioButton.Group onValueChange={value => setPaymentMethod(value)} value={paymentMethod}>
                 <View style={styles.radioItem}>
                   <RadioButton value="Cash" />
-                  <Paragraph>Espece</Paragraph>
+                  <Paragraph>Cash</Paragraph>
                 </View>
                 <View style={styles.radioItem}>
                   <RadioButton value="Check" />
-                  <Paragraph>Cheque</Paragraph>
+                  <Paragraph>Check</Paragraph>
                 </View>
               </RadioButton.Group>
             </Card.Content>
