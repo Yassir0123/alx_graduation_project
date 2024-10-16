@@ -60,7 +60,7 @@ const Home = () => {
         style={[styles.image, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}
       />
       <Animated.Text style={[styles.text, { opacity: fadeAnim, transform: [{ translateY: slideAnim }] }]}>
-        Get Ready to Revolutionize Your Business with Logicom!
+        Get Ready to Revolutionize Your Business with WareCom!
       </Animated.Text>
       <Animated.View style={{ opacity: fadeAnim, transform: [{ translateY: slideAnim }] }}>
         <TouchableOpacity style={styles.button} onPress={handleCommencerPress}>
