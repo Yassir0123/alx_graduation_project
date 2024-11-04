@@ -20,7 +20,7 @@ Provides key functionalities for sales, client management, and order tracking.
 ![image](https://github.com/user-attachments/assets/71051758-b0ff-4cae-944e-5713cb35eb4e)
 ![image](https://github.com/user-attachments/assets/dc690d3a-e446-496d-bb1c-ca877976105a)
 ![image](https://github.com/user-attachments/assets/f6ac2744-bb25-4fca-b69f-c6ea09e4bf88)
-![image](https://github.com/user-attachments/assets/b38f5083-6968-4563-81f7-bc3b68aeb9ce)
+![image](https://github.com/user-attachments/assets/b38f5083-6968-4563-81f7-bc3b68aeb9ce)<br>
 **Receptionist**
 - Responsible for handling stock reception, package reception, and initial data entry tasks.
 ![image](https://github.com/user-attachments/assets/f7b5ab7a-ace1-4952-86b1-a8a5d6e2fa1b)
@@ -37,14 +37,14 @@ Provides key functionalities for sales, client management, and order tracking.
 ![image](https://github.com/user-attachments/assets/af3374ed-1046-41ed-a9c7-38a9cac114cd)
 ![image](https://github.com/user-attachments/assets/49183514-42cc-4e0f-90b2-f549a9fb93f3)
 ![image](https://github.com/user-attachments/assets/81bbcdbe-e410-41cd-9b9a-90204d2a2327)
-![image](https://github.com/user-attachments/assets/57e68ab4-1ad6-4d01-ac01-cd3f340584c8)
+![image](https://github.com/user-attachments/assets/57e68ab4-1ad6-4d01-ac01-cd3f340584c8)<br>
 **Supply Manager**
 - Manages supply and inventory-related tasks, including ordering and stock tracking.
 ![image](https://github.com/user-attachments/assets/a7c59b92-bce7-480c-af59-217059cd77a4)
 ![image](https://github.com/user-attachments/assets/ad569436-cda6-4b9e-a2f0-cec82ca28759)
 ![image](https://github.com/user-attachments/assets/226796b0-0af3-48b4-b564-be35c882a1b6)
 ![image](https://github.com/user-attachments/assets/3e0868ec-8d34-4fb8-9fcc-3eb21e5cc2fd)
-![image](https://github.com/user-attachments/assets/82b2e588-f0d9-4e0c-9a9f-a1842bdd95d2)
+![image](https://github.com/user-attachments/assets/82b2e588-f0d9-4e0c-9a9f-a1842bdd95d2)<br>
 **Delivery Person**
 - Facilitates delivery management, including dispatching, tracking, and updating delivery statuses.
 ![image](https://github.com/user-attachments/assets/6185f042-2273-47da-af65-d531e7cef61f)
@@ -55,7 +55,7 @@ Provides key functionalities for sales, client management, and order tracking.
 ![image](https://github.com/user-attachments/assets/64baaf92-2670-4d3c-96dc-2cfcf3e66e6e)
 ![image](https://github.com/user-attachments/assets/aae64b62-c0c1-4fd3-9d31-f0c202e6d4e2)
 ![image](https://github.com/user-attachments/assets/708dcf2e-c9b2-4b32-9960-93138909b404)
-**Operator**
+**Operator**<br>
 - Handles general warehouse tasks, including product handling and inventory updates.
 ![image](https://github.com/user-attachments/assets/8947ad1c-2ef1-404d-a218-f4f41c0bf95f)
 ![image](https://github.com/user-attachments/assets/6fff992a-760a-4939-8142-ad0b7faa9c8a)
