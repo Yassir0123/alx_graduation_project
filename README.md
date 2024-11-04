@@ -1,5 +1,6 @@
 - This project was created as an ALX graduation project,It's a warehouse management mobile application which aims to handle the different tasks the personels within a warehouse would have to handle.
-- Here's the screens presented : Commercial screen : 
+- Here's the screens presented :
+- Commercial screen : 
 ![image](https://github.com/user-attachments/assets/4343c398-254d-40f1-a7c9-37f3d9d0b9c5)
 ![image](https://github.com/user-attachments/assets/17521b44-150f-4a05-aed8-81328975d2b4)
 ![image](https://github.com/user-attachments/assets/9a74dc8d-ddc2-41ef-804e-8208a3c29205)
@@ -13,7 +14,7 @@
 ![image](https://github.com/user-attachments/assets/dc690d3a-e446-496d-bb1c-ca877976105a)
 ![image](https://github.com/user-attachments/assets/f6ac2744-bb25-4fca-b69f-c6ea09e4bf88)
 ![image](https://github.com/user-attachments/assets/b38f5083-6968-4563-81f7-bc3b68aeb9ce)
-- receptionist : 
+receptionist : 
 ![image](https://github.com/user-attachments/assets/f7b5ab7a-ace1-4952-86b1-a8a5d6e2fa1b)
 ![image](https://github.com/user-attachments/assets/37c9c054-97a1-4680-b8cf-c91059444930)
 ![image](https://github.com/user-attachments/assets/49f99ac9-ff00-43e6-aecb-16111bca2810)
@@ -29,15 +30,13 @@
 ![image](https://github.com/user-attachments/assets/49183514-42cc-4e0f-90b2-f549a9fb93f3)
 ![image](https://github.com/user-attachments/assets/81bbcdbe-e410-41cd-9b9a-90204d2a2327)
 ![image](https://github.com/user-attachments/assets/57e68ab4-1ad6-4d01-ac01-cd3f340584c8)
-
-- supply manager : 
+supply manager : 
 ![image](https://github.com/user-attachments/assets/a7c59b92-bce7-480c-af59-217059cd77a4)
 ![image](https://github.com/user-attachments/assets/ad569436-cda6-4b9e-a2f0-cec82ca28759)
 ![image](https://github.com/user-attachments/assets/226796b0-0af3-48b4-b564-be35c882a1b6)
 ![image](https://github.com/user-attachments/assets/3e0868ec-8d34-4fb8-9fcc-3eb21e5cc2fd)
 ![image](https://github.com/user-attachments/assets/82b2e588-f0d9-4e0c-9a9f-a1842bdd95d2)
-
-- Delivery Person :
+Delivery Person :
 ![image](https://github.com/user-attachments/assets/6185f042-2273-47da-af65-d531e7cef61f)
 ![image](https://github.com/user-attachments/assets/ff7f2d95-7c95-4b50-aec9-cd6616c3a74e)
 ![image](https://github.com/user-attachments/assets/37e777ca-1fc2-4155-9960-f65a3bf89999)
