@@ -1,6 +1,5 @@
 - This project was created as an ALX graduation project,It's a warehouse management mobile application which aims to handle the different tasks the personels within a warehouse would have to handle.
-- Here's the screens presented : 
-- Commercial screen : 
+- Here's the screens presented : Commercial screen : 
 ![image](https://github.com/user-attachments/assets/4343c398-254d-40f1-a7c9-37f3d9d0b9c5)
 ![image](https://github.com/user-attachments/assets/17521b44-150f-4a05-aed8-81328975d2b4)
 ![image](https://github.com/user-attachments/assets/9a74dc8d-ddc2-41ef-804e-8208a3c29205)
@@ -14,7 +13,7 @@
 ![image](https://github.com/user-attachments/assets/dc690d3a-e446-496d-bb1c-ca877976105a)
 ![image](https://github.com/user-attachments/assets/f6ac2744-bb25-4fca-b69f-c6ea09e4bf88)
 ![image](https://github.com/user-attachments/assets/b38f5083-6968-4563-81f7-bc3b68aeb9ce)
-receptionist : 
+- receptionist : 
 ![image](https://github.com/user-attachments/assets/f7b5ab7a-ace1-4952-86b1-a8a5d6e2fa1b)
 ![image](https://github.com/user-attachments/assets/37c9c054-97a1-4680-b8cf-c91059444930)
 ![image](https://github.com/user-attachments/assets/49f99ac9-ff00-43e6-aecb-16111bca2810)
