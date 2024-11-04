@@ -1,6 +1,13 @@
-- This project was created as an ALX graduation project,It's a warehouse management mobile application which aims to handle the different tasks the personels within a warehouse would have to handle.
-- Here's the screens presented :
-- Commercial screen : 
+# ALX Graduation Project - Warehouse Management Mobile Application
+This project is a mobile application developed as an ALX graduation project. It focuses on warehouse management, aiming to streamline various tasks required by warehouse personnel. The app is organized by roles, with each role-specific screen tailored to address particular operational needs.
+
+Screens Overview
+The application features screens organized for different warehouse roles, each designed to handle specific tasks and responsibilities.
+
+**Commercial Screen**
+Tasked with managing commercial aspects within the warehouse.
+Provides key functionalities for sales, client management, and order tracking.
+
 ![image](https://github.com/user-attachments/assets/4343c398-254d-40f1-a7c9-37f3d9d0b9c5)
 ![image](https://github.com/user-attachments/assets/17521b44-150f-4a05-aed8-81328975d2b4)
 ![image](https://github.com/user-attachments/assets/9a74dc8d-ddc2-41ef-804e-8208a3c29205)
@@ -14,7 +21,8 @@
 ![image](https://github.com/user-attachments/assets/dc690d3a-e446-496d-bb1c-ca877976105a)
 ![image](https://github.com/user-attachments/assets/f6ac2744-bb25-4fca-b69f-c6ea09e4bf88)
 ![image](https://github.com/user-attachments/assets/b38f5083-6968-4563-81f7-bc3b68aeb9ce)
-receptionist : 
+**Receptionist**
+- Responsible for handling stock reception, package reception, and initial data entry tasks.
 ![image](https://github.com/user-attachments/assets/f7b5ab7a-ace1-4952-86b1-a8a5d6e2fa1b)
 ![image](https://github.com/user-attachments/assets/37c9c054-97a1-4680-b8cf-c91059444930)
 ![image](https://github.com/user-attachments/assets/49f99ac9-ff00-43e6-aecb-16111bca2810)
@@ -30,13 +38,15 @@ receptionist :
 ![image](https://github.com/user-attachments/assets/49183514-42cc-4e0f-90b2-f549a9fb93f3)
 ![image](https://github.com/user-attachments/assets/81bbcdbe-e410-41cd-9b9a-90204d2a2327)
 ![image](https://github.com/user-attachments/assets/57e68ab4-1ad6-4d01-ac01-cd3f340584c8)
-supply manager : 
+**Supply Manager**
+- Manages supply and inventory-related tasks, including ordering and stock tracking.
 ![image](https://github.com/user-attachments/assets/a7c59b92-bce7-480c-af59-217059cd77a4)
 ![image](https://github.com/user-attachments/assets/ad569436-cda6-4b9e-a2f0-cec82ca28759)
 ![image](https://github.com/user-attachments/assets/226796b0-0af3-48b4-b564-be35c882a1b6)
 ![image](https://github.com/user-attachments/assets/3e0868ec-8d34-4fb8-9fcc-3eb21e5cc2fd)
 ![image](https://github.com/user-attachments/assets/82b2e588-f0d9-4e0c-9a9f-a1842bdd95d2)
-Delivery Person :
+**Delivery Person**
+- Facilitates delivery management, including dispatching, tracking, and updating delivery statuses.
 ![image](https://github.com/user-attachments/assets/6185f042-2273-47da-af65-d531e7cef61f)
 ![image](https://github.com/user-attachments/assets/ff7f2d95-7c95-4b50-aec9-cd6616c3a74e)
 ![image](https://github.com/user-attachments/assets/37e777ca-1fc2-4155-9960-f65a3bf89999)
@@ -45,7 +55,8 @@ Delivery Person :
 ![image](https://github.com/user-attachments/assets/64baaf92-2670-4d3c-96dc-2cfcf3e66e6e)
 ![image](https://github.com/user-attachments/assets/aae64b62-c0c1-4fd3-9d31-f0c202e6d4e2)
 ![image](https://github.com/user-attachments/assets/708dcf2e-c9b2-4b32-9960-93138909b404)
-Operator : 
+**Operator**
+- Handles general warehouse tasks, including product handling and inventory updates.
 ![image](https://github.com/user-attachments/assets/8947ad1c-2ef1-404d-a218-f4f41c0bf95f)
 ![image](https://github.com/user-attachments/assets/6fff992a-760a-4939-8142-ad0b7faa9c8a)
 ![image](https://github.com/user-attachments/assets/3fc21c27-042f-422c-a589-17fa1a1ad949)
